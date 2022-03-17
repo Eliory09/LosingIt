@@ -18,6 +18,7 @@ public class M_CinemachineCamerasController : MonoBehaviour
 
     public static void AddCamera(Vector3 location)
     {
+        location.z = -10;
         Instantiate(_shared._camera, location, quaternion.identity);
     }
 }
