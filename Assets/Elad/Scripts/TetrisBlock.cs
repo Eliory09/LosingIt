@@ -13,9 +13,9 @@ public class TetrisBlock : MonoBehaviour
     public float fallTime = 0.8f;
 
     //Restrictions Of movement if needed 
-    public static int height = 20;
-    public static int width = 20;
-    private static Transform[,] grid = new Transform[width,height];
+    public static int height = 100;
+    public static int width = 100;
+    public static Transform[,] grid = new Transform[width,height];
     
 
     //Rotation 
@@ -31,7 +31,7 @@ public class TetrisBlock : MonoBehaviour
     void Update()
     {
         //Horizontal Movement
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.Keypad4))
         {
             transform.position += new Vector3(-1, 0, 0);
             if (!ValidMove())
@@ -41,7 +41,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.Keypad6))
         {
             transform.position += new Vector3(1, 0, 0);
             if (!ValidMove())
@@ -50,7 +50,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.Keypad8))
         {
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidMove())
@@ -64,7 +64,7 @@ public class TetrisBlock : MonoBehaviour
         //Vertical Movement
 
        
-            if (Time.time - _previousTime > (Input.GetKey(KeyCode.DownArrow) ? fallTime / 10 : fallTime))
+            if (Time.time - _previousTime > (Input.GetKey(KeyCode.Keypad2) ? fallTime / 10 : fallTime))
             {
                 transform.position += new Vector3(0, -1, 0);
                 _previousTime = Time.time;
@@ -101,7 +101,8 @@ public class TetrisBlock : MonoBehaviour
             var roundX = Mathf.RoundToInt(children.transform.position.x);
             var roundY = Mathf.RoundToInt(children.transform.position.y);
 
-            if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height)
+            // if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height) 
+            if ( roundY < 0 )
             {
                 return false;
             }

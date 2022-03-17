@@ -214,7 +214,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 214112258}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -416,17 +416,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 7106463229258646901, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.13
       objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -1.44
       objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
       propertyPath: m_LocalPosition.z
