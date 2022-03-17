@@ -37,7 +37,7 @@ public class M_BallMovement : MonoBehaviour
         }
         else
         {
-            physics.AddForce(-physics.velocity.normalized * speed);
+            physics.AddForce(-physics.velocity.normalized * 3 * speed);
         }
     }
 }
