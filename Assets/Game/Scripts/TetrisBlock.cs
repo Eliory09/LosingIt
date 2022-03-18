@@ -12,7 +12,7 @@ public class TetrisBlock : MonoBehaviour
     //Restrictions Of movement if needed 
     public static int height = 100;
     public static int width = 100;
-    public static Transform[,] grid = new Transform[width,height];
+    public static bool[,] grid = new bool[width,height];
     
 
     //Rotation 
@@ -22,7 +22,7 @@ public class TetrisBlock : MonoBehaviour
     void Update()
     {
         //Horizontal Movement
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             transform.position += new Vector3(-1, 0, 0);
             if (!ValidMove())
@@ -32,7 +32,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.RightArrow))
+        else if (Input.GetKeyDown(KeyCode.D))
         {
             transform.position += new Vector3(1, 0, 0);
             if (!ValidMove())
@@ -41,7 +41,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.UpArrow))
+        else if (Input.GetKeyDown(KeyCode.W))
         {
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidMove())
@@ -53,7 +53,7 @@ public class TetrisBlock : MonoBehaviour
         
         //Vertical Movement
         
-        if (Time.time - _previousTime > (Input.GetKey(KeyCode.DownArrow) ? fallTime / 10 : fallTime))
+        if (Time.time - _previousTime > (Input.GetKey(KeyCode.S) ? fallTime / 10 : fallTime))
         {
             transform.position += new Vector3(0, -1, 0);
             _previousTime = Time.time;
@@ -61,27 +61,26 @@ public class TetrisBlock : MonoBehaviour
             {
                 transform.position -= new Vector3(0, -1, 0);
                 AddToGrid();
-                this.enabled = false;
-                FindObjectOfType<M1_SpawnerScript>().NewTetrisBlock();
+                enabled = false;
+                FindObjectOfType<SpawnerScript>().NewTetrisBlock();
             }
         }
     }
-    void AddToGrid()
+
+    private void AddToGrid()
     {
         foreach (Transform children in transform)
         {
             var childPos = children.transform.position;
             var roundX = Mathf.RoundToInt(childPos.x);
             var roundY = Mathf.RoundToInt(childPos.y);
-
-            
-            grid[roundX, roundY] = children;
+            // grid[roundX, roundY] = children;
+            grid[roundX, roundY] = true;
         }
-        
     }
 
-//Restrictions Of movement if needed 
-    bool ValidMove()
+    //Restrictions Of movement if needed 
+    private bool ValidMove()
     {
         foreach (Transform children in transform)
         {
@@ -95,12 +94,33 @@ public class TetrisBlock : MonoBehaviour
                 return false;
             }
 
-            if (grid[roundX,roundY] != null)
+            if (grid[roundX,roundY])
             {
                 return false;
             }
         }
 
         return true;
+    }
+
+    public static void AddBlocksToGrid(int minX, int maxX, int minY, int maxY)
+    {
+        for (int i = minY; i < maxY; i++)
+        {
+            for (int j = minX; j < maxX; j++)
+            {
+                grid[j, i] = true;
+            }
+        }
+    }
+    public static void RemoveBlocksFromGrid(int minX, int maxX, int minY, int maxY)
+    {
+        for (int i = minY; i < maxY; i++)
+        {
+            for (int j = minX; j < maxX; j++)
+            {
+                grid[j, i] = false;
+            }
+        }
     }
 }

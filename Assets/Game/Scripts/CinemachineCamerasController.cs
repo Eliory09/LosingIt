@@ -8,7 +8,6 @@ using UnityEngine;
 public class CinemachineCamerasController : MonoBehaviour
 {
     [SerializeField] private CinemachineVirtualCamera vmCamera;
-    [SerializeField] private GameObject _camera;
     private static CinemachineCamerasController _shared;
 
     private void Awake()
@@ -19,6 +18,6 @@ public class CinemachineCamerasController : MonoBehaviour
     public static void AddCamera(Vector3 location)
     {
         location.z = -10;
-        Instantiate(_shared._camera, location, quaternion.identity);
+        Instantiate(_shared.vmCamera, location, quaternion.identity);
     }
 }

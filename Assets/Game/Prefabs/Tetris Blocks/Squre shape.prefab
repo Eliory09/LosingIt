@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 87794258797790478}
-  - component: {fileID: 1998934291294486773}
+  - component: {fileID: 7202818962046642865}
   m_Layer: 0
   m_Name: Squre shape
   m_TagString: Block
@@ -253,7 +253,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1998934291294486773
+--- !u!114 &7202818962046642865
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -262,11 +262,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1718272883544294523}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ec60a2a90000579488018596cbbe622c, type: 3}
+  m_Script: {fileID: 11500000, guid: b562908ac9df64d508b95854dd579ce5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   fallTime: 0.8
-  rotationPoint: {x: -0.5, y: 0.5, z: 0}
+  rotationPoint: {x: -0.5, y: -0.5, z: 0}
 --- !u!1 &6339257365231696545
 GameObject:
   m_ObjectHideFlags: 0

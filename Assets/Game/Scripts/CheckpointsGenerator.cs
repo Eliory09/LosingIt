@@ -12,10 +12,10 @@ using Vector3 = UnityEngine.Vector3;
 public class CheckpointsGenerator : MonoBehaviour
 {
     [Range(0.0f, 50.0f)]
-    [SerializeField] private float widthRange;
-    [Range(0.0f, 50.0f)]
-    [SerializeField] private float heightRange;
+    [SerializeField] private float radius;
+    [SerializeField] private float angleDelta;
     [SerializeField] private GameObject checkpointObj;
+    [SerializeField] private GameObject ball;
     
     private float _level;
     private Vector3 _currentPoint = Vector3.zero;
@@ -38,9 +38,17 @@ public class CheckpointsGenerator : MonoBehaviour
 
     public static void GenerateNewPoint()
     {
-        float x = Random.Range(-_shared.widthRange, _shared.widthRange);
-        float y = Random.Range(_shared.heightRange * _shared._level, _shared.heightRange * (_shared._level + 1));
-        _shared._currentPoint = new Vector3(x, y, 0);
+        var delta = 90;
+        var theta = Mathf.Deg2Rad * (Random.Range(-_shared.angleDelta, _shared.angleDelta) + delta);
+        print(theta);
+        _shared._currentPoint = 
+            new Vector3(
+                (float) (_shared.radius * Math.Cos(theta)), 
+                (float) (_shared.radius * Math.Sin(theta)), 
+                0);
+        _shared._currentPoint += _shared.ball.transform.position;
+        _shared._currentPoint.x = Mathf.RoundToInt(_shared._currentPoint.x);
+        _shared._currentPoint.y = Mathf.RoundToInt(_shared._currentPoint.y);
         GameObject checkpointGameObject = Instantiate(_shared.checkpointObj);
         checkpointGameObject.transform.position = _shared._currentPoint;
         CinemachineCamerasController.AddCamera(checkpointGameObject.transform.position);
