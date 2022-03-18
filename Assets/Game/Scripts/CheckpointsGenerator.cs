@@ -9,7 +9,7 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
-public class M_CheckpointsGenerator : MonoBehaviour
+public class CheckpointsGenerator : MonoBehaviour
 {
     [Range(0.0f, 50.0f)]
     [SerializeField] private float widthRange;
@@ -19,7 +19,7 @@ public class M_CheckpointsGenerator : MonoBehaviour
     
     private float _level;
     private Vector3 _currentPoint = Vector3.zero;
-    private static M_CheckpointsGenerator _shared;
+    private static CheckpointsGenerator _shared;
 
     private void Awake()
     {
@@ -43,6 +43,6 @@ public class M_CheckpointsGenerator : MonoBehaviour
         _shared._currentPoint = new Vector3(x, y, 0);
         GameObject checkpointGameObject = Instantiate(_shared.checkpointObj);
         checkpointGameObject.transform.position = _shared._currentPoint;
-        M_CinemachineCamerasController.AddCamera(checkpointGameObject.transform.position);
+        CinemachineCamerasController.AddCamera(checkpointGameObject.transform.position);
     }
 }

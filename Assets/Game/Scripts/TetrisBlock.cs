@@ -5,9 +5,6 @@ using UnityEngine.Serialization;
 
 public class TetrisBlock : MonoBehaviour
 {
-    
-    
-    
     //Vertical Movement
     private float _previousTime;
     public float fallTime = 0.8f;
@@ -21,17 +18,11 @@ public class TetrisBlock : MonoBehaviour
     //Rotation 
     public Vector3 rotationPoint;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
     // Update is called once per frame
     void Update()
     {
         //Horizontal Movement
-        if (Input.GetKeyDown(KeyCode.Keypad4))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             transform.position += new Vector3(-1, 0, 0);
             if (!ValidMove())
@@ -41,7 +32,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.Keypad6))
+        else if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             transform.position += new Vector3(1, 0, 0);
             if (!ValidMove())
@@ -50,7 +41,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
 
-        else if (Input.GetKeyDown(KeyCode.Keypad8))
+        else if (Input.GetKeyDown(KeyCode.UpArrow))
         {
             transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), 90);
             if (!ValidMove())
@@ -59,33 +50,29 @@ public class TetrisBlock : MonoBehaviour
 
             }
         }
-
-
+        
         //Vertical Movement
-
-       
-            if (Time.time - _previousTime > (Input.GetKey(KeyCode.Keypad2) ? fallTime / 10 : fallTime))
+        
+        if (Time.time - _previousTime > (Input.GetKey(KeyCode.DownArrow) ? fallTime / 10 : fallTime))
+        {
+            transform.position += new Vector3(0, -1, 0);
+            _previousTime = Time.time;
+            if (!ValidMove())
             {
-                transform.position += new Vector3(0, -1, 0);
-                _previousTime = Time.time;
-                if (!ValidMove())
-                {
-                    transform.position -= new Vector3(0, -1, 0);
-                    AddToGrid();
-                    this.enabled = false;
-                    FindObjectOfType<SpawnerScript>().NewTetrisBlock();
-                }
+                transform.position -= new Vector3(0, -1, 0);
+                AddToGrid();
+                this.enabled = false;
+                FindObjectOfType<M1_SpawnerScript>().NewTetrisBlock();
             }
-
-
+        }
     }
-
     void AddToGrid()
     {
         foreach (Transform children in transform)
         {
-            var roundX = Mathf.RoundToInt(children.transform.position.x);
-            var roundY = Mathf.RoundToInt(children.transform.position.y);
+            var childPos = children.transform.position;
+            var roundX = Mathf.RoundToInt(childPos.x);
+            var roundY = Mathf.RoundToInt(childPos.y);
 
             
             grid[roundX, roundY] = children;
@@ -98,8 +85,9 @@ public class TetrisBlock : MonoBehaviour
     {
         foreach (Transform children in transform)
         {
-            var roundX = Mathf.RoundToInt(children.transform.position.x);
-            var roundY = Mathf.RoundToInt(children.transform.position.y);
+            var childPos = children.transform.position;
+            var roundX = Mathf.RoundToInt(childPos.x);
+            var roundY = Mathf.RoundToInt(childPos.y);
 
             // if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height) 
             if ( roundY < 0 )
