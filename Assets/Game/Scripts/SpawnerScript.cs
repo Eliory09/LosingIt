@@ -20,7 +20,7 @@ public class SpawnerScript : MonoBehaviour
         {
             var pos = Camera.main.transform.position;
             var roundX = Mathf.RoundToInt(pos.x);
-            var roundY = Mathf.RoundToInt(pos.y) + 6;
+            var roundY = Mathf.RoundToInt(pos.y) + 6f;
             var newPos =  new Vector3(roundX, roundY, 10);
             transform.position = newPos;
         }
@@ -50,7 +50,7 @@ public class SpawnerScript : MonoBehaviour
         var position = transform.position;
         var xPos = Mathf.RoundToInt(position.x);
         var yPos = Mathf.RoundToInt(position.y - 3);
-        for (int i = xPos - 11; i <= xPos + 11; i++)
+        for (int i = xPos - 9; i <= xPos + 9; i++)
         {
             if (TetrisBlock.grid[xPos, yPos])
             {

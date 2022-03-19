@@ -12,7 +12,7 @@ public class TetrisBlock : MonoBehaviour
     //Restrictions Of movement if needed 
     public static int height = 100;
     public static int width = 100;
-    public static bool[,] grid = new bool[width,height];
+    public static Transform[,] grid = new Transform[width,height];
     
 
     //Rotation 
@@ -74,8 +74,7 @@ public class TetrisBlock : MonoBehaviour
             var childPos = children.transform.position;
             var roundX = Mathf.RoundToInt(childPos.x);
             var roundY = Mathf.RoundToInt(childPos.y);
-            // grid[roundX, roundY] = children;
-            grid[roundX, roundY] = true;
+            grid[roundX, roundY] = children;
         }
     }
 
@@ -111,13 +110,13 @@ public class TetrisBlock : MonoBehaviour
     /// <param name="maxX"></param>
     /// <param name="minY"></param>
     /// <param name="maxY"></param>
-    public static void AddBlocksToGrid(int minX, int maxX, int minY, int maxY)
+    public static void AddBlocksToGrid(Transform obj, int minX, int maxX, int minY, int maxY)
     {
         for (int i = minY; i < maxY; i++)
         {
             for (int j = minX; j < maxX; j++)
             {
-                grid[j, i] = true;
+                grid[j, i] = obj;
             }
         }
     }
@@ -130,13 +129,13 @@ public class TetrisBlock : MonoBehaviour
     /// <param name="maxX"></param>
     /// <param name="minY"></param>
     /// <param name="maxY"></param>
-    public static void RemoveBlocksFromGrid(int minX, int maxX, int minY, int maxY)
+    public static void RemoveBlocksFromGrid(Transform obj, int minX, int maxX, int minY, int maxY)
     {
         for (int i = minY; i < maxY; i++)
         {
             for (int j = minX; j < maxX; j++)
             {
-                grid[j, i] = false;
+                grid[j, i] = obj;
             }
         }
     }
