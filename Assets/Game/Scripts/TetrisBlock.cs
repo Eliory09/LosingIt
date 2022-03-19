@@ -12,8 +12,10 @@ public class TetrisBlock : MonoBehaviour
     //Restrictions Of movement if needed 
     public static int height = 100;
     public static int width = 100;
-    public static Transform[,] grid = new Transform[width,height];
-    
+    public static Transform[,] grid = new Transform[width, height];
+
+
+
 
     //Rotation 
     public Vector3 rotationPoint;
@@ -28,7 +30,6 @@ public class TetrisBlock : MonoBehaviour
             if (!ValidMove())
             {
                 transform.position -= new Vector3(-1, 0, 0);
-
             }
         }
 
@@ -47,12 +48,11 @@ public class TetrisBlock : MonoBehaviour
             if (!ValidMove())
             {
                 transform.RotateAround(transform.TransformPoint(rotationPoint), new Vector3(0, 0, 1), -90);
-
             }
         }
-        
+
         //Vertical Movement
-        
+
         if (Time.time - _previousTime > (Input.GetKey(KeyCode.S) ? fallTime / 10 : fallTime))
         {
             transform.position += new Vector3(0, -1, 0);
@@ -65,7 +65,11 @@ public class TetrisBlock : MonoBehaviour
                 FindObjectOfType<SpawnerScript>().AllowSpawn();
             }
         }
+        
+        
     }
+
+    
 
     private void AddToGrid()
     {
@@ -88,12 +92,12 @@ public class TetrisBlock : MonoBehaviour
             var roundY = Mathf.RoundToInt(childPos.y);
 
             // if (roundX < 0 || roundX >= width || roundY < 0 || roundY >= height) 
-            if ( roundY < 0 )
+            if (roundY < 0)
             {
                 return false;
             }
 
-            if (grid[roundX,roundY])
+            if (grid[roundX, roundY])
             {
                 return false;
             }
@@ -120,7 +124,7 @@ public class TetrisBlock : MonoBehaviour
             }
         }
     }
-    
+
     /// <summary>
     /// Remove blocks from the grid.
     /// Used to remove platforms and previous blocks.
