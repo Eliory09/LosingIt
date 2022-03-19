@@ -103,6 +103,14 @@ public class TetrisBlock : MonoBehaviour
         return true;
     }
 
+    /// <summary>
+    /// Add blocks to grid.
+    /// Used to enter new platforms to the grid.
+    /// </summary>
+    /// <param name="minX"></param>
+    /// <param name="maxX"></param>
+    /// <param name="minY"></param>
+    /// <param name="maxY"></param>
     public static void AddBlocksToGrid(int minX, int maxX, int minY, int maxY)
     {
         for (int i = minY; i < maxY; i++)
@@ -113,6 +121,15 @@ public class TetrisBlock : MonoBehaviour
             }
         }
     }
+    
+    /// <summary>
+    /// Remove blocks from the grid.
+    /// Used to remove platforms and previous blocks.
+    /// </summary>
+    /// <param name="minX"></param>
+    /// <param name="maxX"></param>
+    /// <param name="minY"></param>
+    /// <param name="maxY"></param>
     public static void RemoveBlocksFromGrid(int minX, int maxX, int minY, int maxY)
     {
         for (int i = minY; i < maxY; i++)
