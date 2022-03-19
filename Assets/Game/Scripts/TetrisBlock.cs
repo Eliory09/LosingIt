@@ -52,11 +52,9 @@ public class TetrisBlock : MonoBehaviour
         }
         
         //Vertical Movement
-        print("try to enter");
         
         if (Time.time - _previousTime > (Input.GetKey(KeyCode.S) ? fallTime / 10 : fallTime))
         {
-            print("entered");
             transform.position += new Vector3(0, -1, 0);
             _previousTime = Time.time;
             if (!ValidMove())

@@ -35,7 +35,6 @@ public class SpawnerScript : MonoBehaviour
     {
         if (IsValidToSpawn())
         {
-            print("valid to spawn");
             Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Length)], transform.position, Quaternion.identity);
             isSpawnAllowed = false;
         }
@@ -51,7 +50,7 @@ public class SpawnerScript : MonoBehaviour
         var position = transform.position;
         var xPos = Mathf.RoundToInt(position.x);
         var yPos = Mathf.RoundToInt(position.y - 3);
-        for (int i = xPos - 9; i <= xPos + 9; i++)
+        for (int i = xPos - 11; i <= xPos + 11; i++)
         {
             if (TetrisBlock.grid[xPos, yPos])
             {
