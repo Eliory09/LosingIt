@@ -65,8 +65,10 @@ public class SpawnerScript : MonoBehaviour
     {
         var positionY = transform.position.y;
         var dLastBrickSpawner = positionY - lastBlock.transform.position.y;
-        var dBallSpawner = positionY - ball.transform.position.y;
-        return (dBallSpawner * maxSpaceBlockToSpawner <= dLastBrickSpawner);
+        // var dBallSpawner = positionY - ball.transform.position.y;
+        // return (dBallSpawner * maxSpaceBlockToSpawner <= dLastBrickSpawner);
+        return ( maxSpaceBlockToSpawner <= dLastBrickSpawner);
+
     }
 
     /**
