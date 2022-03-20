@@ -800,37 +800,53 @@ PrefabInstance:
       value: GameController
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: ball
+      value: 
+      objectReference: {fileID: 142185637}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: deleteLength
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: maxSpaceBlockToSpawner
+      value: 1.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: minSpaceBlockToSpawner
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.size
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[0]
       value: 
-      objectReference: {fileID: 472744107959935572, guid: e08628251d2ef41569ebb2a3842f3d36, type: 3}
+      objectReference: {fileID: 2318192354174035810, guid: e08628251d2ef41569ebb2a3842f3d36, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[1]
       value: 
-      objectReference: {fileID: 5407042206557873820, guid: 5add22801304d490dafa6a07b2c3619c, type: 3}
+      objectReference: {fileID: 7679735508564960164, guid: 5add22801304d490dafa6a07b2c3619c, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[2]
       value: 
-      objectReference: {fileID: 209785372952464616, guid: eb72e9937743e4da2889c982bf443675, type: 3}
+      objectReference: {fileID: 7055939238212796376, guid: eb72e9937743e4da2889c982bf443675, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[3]
       value: 
-      objectReference: {fileID: 1718272883544294523, guid: 49438eed87dd64145a24a83476488dd3, type: 3}
+      objectReference: {fileID: 2847353807136214353, guid: 49438eed87dd64145a24a83476488dd3, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[4]
       value: 
-      objectReference: {fileID: 1748267643457448109, guid: 6c608fc3308414eb8a1f9b2db2467b4c, type: 3}
+      objectReference: {fileID: 8186118838835232838, guid: 6c608fc3308414eb8a1f9b2db2467b4c, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[5]
       value: 
-      objectReference: {fileID: 8132061712959139917, guid: 6df195bfe0b1e48c888d7a6c4755cc82, type: 3}
+      objectReference: {fileID: 4457001015001779281, guid: 6df195bfe0b1e48c888d7a6c4755cc82, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[6]
       value: 
-      objectReference: {fileID: 4341003180567876867, guid: f2d85e934488742ba991ce35b4c8aad4, type: 3}
+      objectReference: {fileID: 609902958168703600, guid: f2d85e934488742ba991ce35b4c8aad4, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
 --- !u!1 &1513655609
