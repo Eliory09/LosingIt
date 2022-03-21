@@ -809,7 +809,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: maxSpaceBlockToSpawner
-      value: 1.7
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: minSpaceBlockToSpawner
