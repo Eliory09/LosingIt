@@ -50,6 +50,10 @@ public class GameManager : MonoBehaviour
     {
         var objs = GameObject.FindGameObjectsWithTag("Block");
         foreach (var o in objs) Destroy(o);
+        
+        objs = GameObject.FindGameObjectsWithTag("Barricades");
+        foreach (var o in objs) Destroy(o);
+        
 
         MusicManager.ChangeMusic(_shared.startMusic);
         _shared.spawner.DisableSpawn();
