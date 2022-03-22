@@ -37,7 +37,7 @@ public class BarricadeGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        print(!spawner.isSpawnAllowed);
         if (!spawner.isSpawnAllowed)
         {
             if (_timer >= timeToGenerate)

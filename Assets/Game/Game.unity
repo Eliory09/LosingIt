@@ -123,6 +123,60 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &72425604
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 72425606}
+  - component: {fileID: 72425605}
+  m_Layer: 0
+  m_Name: Barricades Generator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &72425605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72425604}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5f12d05f6d103e44a6752b38fd73f72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  barricades:
+  - {fileID: 1274924804930208886, guid: aa9a2275ab6e869448431850d76d9186, type: 3}
+  - {fileID: 6361768268034918760, guid: a074f6ad37a4d8c4792bc5fd8b49e176, type: 3}
+  - {fileID: 8755828237767760802, guid: 79021a4c0b5676e4f9bdab5eea63eabc, type: 3}
+  - {fileID: 2275617206309592052, guid: 1e41fa72cd1c2494594606106897792b, type: 3}
+  spawner: {fileID: 1649863972}
+  ball: {fileID: 142185637}
+  xRangeScreen: 10
+  timeToGenerate: 5
+  maxRandX: 4
+  spawnerDistance: 5
+--- !u!4 &72425606
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 72425604}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 48.98807, y: 10.998583, z: -3.5636888}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &118763468
 GameObject:
   m_ObjectHideFlags: 0
@@ -498,6 +552,10 @@ PrefabInstance:
       propertyPath: m_Follow
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 3000937992159076644, guid: ea74342fdcb74437082453570605fa31, type: 3}
+      propertyPath: m_Lens.OrthographicSize
+      value: 9
+      objectReference: {fileID: 0}
     - target: {fileID: 3000937992159076645, guid: ea74342fdcb74437082453570605fa31, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -728,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1049982882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1239,15 +1297,27 @@ PrefabInstance:
       objectReference: {fileID: 142185637}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: deleteLength
-      value: 20
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: camaraDistance
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: maxSpaceBlockToSpawner
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: minSpaceBlockToSpawner
-      value: 5
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: maxSpaceBlockToSpawnerX
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: maxSpaceBlockToSpawnerY
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.size
@@ -1579,7 +1649,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 9
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1604,7 +1674,7 @@ Transform:
   m_GameObject: {fileID: 1840363205}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 50, y: 5, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 2.5375, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1

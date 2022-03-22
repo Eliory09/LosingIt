@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Block
   - Shape
+  - Barricades
   layers:
   - Default
   - TransparentFX
