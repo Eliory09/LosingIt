@@ -16,8 +16,8 @@ public class CheckpointsGenerator : MonoBehaviour
     [SerializeField] private float angleDelta;
     [SerializeField] private GameObject checkpointObj;
     [SerializeField] private GameObject ball;
+    private GameObject currentCheckpoint;
     
-    private float _level;
     private Vector3 _currentPoint = Vector3.zero;
     private static CheckpointsGenerator _shared;
 
@@ -26,21 +26,10 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared = this;
     }
 
-    private void Start()
-    {
-        GenerateNewPoint();
-    }
-
-    public static void LevelUp()
-    {
-        _shared._level++;
-    }
-
     public static void GenerateNewPoint()
     {
         var delta = 90;
         var theta = Mathf.Deg2Rad * (Random.Range(-_shared.angleDelta, _shared.angleDelta) + delta);
-        print(theta);
         _shared._currentPoint = 
             new Vector3(
                 (float) (_shared.radius * Math.Cos(theta)), 
@@ -49,8 +38,14 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared._currentPoint += _shared.ball.transform.position;
         _shared._currentPoint.x = Mathf.RoundToInt(_shared._currentPoint.x);
         _shared._currentPoint.y = Mathf.RoundToInt(_shared._currentPoint.y);
-        GameObject checkpointGameObject = Instantiate(_shared.checkpointObj);
-        checkpointGameObject.transform.position = _shared._currentPoint;
-        CinemachineCamerasController.AddCamera(checkpointGameObject.transform.position);
+        _shared.currentCheckpoint = Instantiate(_shared.checkpointObj);
+        _shared.currentCheckpoint.transform.position = _shared._currentPoint;
+        CinemachineCamerasController.AddCamera(_shared.currentCheckpoint.transform.position);
+    }
+
+    public static void RemoveCheckpoint()
+    {
+        if(_shared.currentCheckpoint != null)
+            Destroy(_shared.currentCheckpoint.gameObject);
     }
 }

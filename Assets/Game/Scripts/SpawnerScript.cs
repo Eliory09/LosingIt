@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 
 public class SpawnerScript : MonoBehaviour
 {
@@ -9,21 +12,18 @@ public class SpawnerScript : MonoBehaviour
     public GameObject[] tetrisBlocks;
     private bool isSpawnAllowed;
 
-
     private GameObject lastBlock;
     public float minSpaceBlockToSpawner = 0.1f;
     public float maxSpaceBlockToSpawner = 1.2f;
     public GameObject ball;
 
     [SerializeField] private int deleteLength = 10;
+    public bool stopSpawn;
 
-
-    public bool stopSpawn = false;
-
-    void Start()
-    {
-        NewTetrisBlock();
-    }
+    // private void Awake()
+    // {
+    //     NewTetrisBlock();
+    // }
 
     void Update()
     {
@@ -35,8 +35,7 @@ public class SpawnerScript : MonoBehaviour
             var newPos = new Vector3(roundX, roundY, 10);
             transform.position = newPos;
         }
-
-
+        
         if (isSpawnAllowed & EnoughSpace() & (!stopSpawn))
         {
             NewTetrisBlock();
@@ -88,6 +87,14 @@ public class SpawnerScript : MonoBehaviour
     public void AllowSpawn()
     {
         isSpawnAllowed = true;
+        stopSpawn = false;
+        NewTetrisBlock();
+    }
+    
+    public void DisableSpawn()
+    {
+        isSpawnAllowed = false;
+        stopSpawn = true;
     }
 
     private bool IsValidToSpawn()
@@ -102,7 +109,6 @@ public class SpawnerScript : MonoBehaviour
                 return false;
             }
         }
-
         return true;
     }
 

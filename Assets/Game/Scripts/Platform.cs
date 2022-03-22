@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    private void Awake()
+    public void AddToGrid()
     {
         var obj = gameObject;
         var pos = obj.transform.position;
@@ -16,7 +16,6 @@ public class Platform : MonoBehaviour
         var maxY = Mathf.RoundToInt(pos.y + (scale.y / 2));
         TetrisBlock.AddBlocksToGrid(transform, minX, maxX, minY, maxY);
     }
-
     private void OnDisable()
     {
         var obj = gameObject;

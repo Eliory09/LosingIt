@@ -12,11 +12,9 @@ public class TetrisBlock : MonoBehaviour
     //Restrictions Of movement if needed 
     public static int height = 100;
     public static int width = 100;
-    public static Transform[,] grid = new Transform[width, height];
-
-
-
-
+    // public static Transform[,] grid = new Transform[width, height];
+    public static Transform[,] grid;
+    
     //Rotation 
     public Vector3 rotationPoint;
 
@@ -65,16 +63,14 @@ public class TetrisBlock : MonoBehaviour
                 FindObjectOfType<SpawnerScript>().AllowSpawn();
             }
         }
-        
-        
     }
-
     
-
     private void AddToGrid()
     {
         foreach (Transform children in transform)
         {
+            if (children.CompareTag("Shape")) continue;
+
             var childPos = children.transform.position;
             var roundX = Mathf.RoundToInt(childPos.x);
             var roundY = Mathf.RoundToInt(childPos.y);
@@ -142,5 +138,10 @@ public class TetrisBlock : MonoBehaviour
                 grid[j, i] = obj;
             }
         }
+    }
+    
+    public static void ResetGrid()
+    {
+        grid = new Transform[width, height];
     }
 }
