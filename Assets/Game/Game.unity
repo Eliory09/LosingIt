@@ -159,8 +159,8 @@ MonoBehaviour:
   - {fileID: 2275617206309592052, guid: 1e41fa72cd1c2494594606106897792b, type: 3}
   spawner: {fileID: 1649863972}
   ball: {fileID: 142185637}
-  xRangeScreen: 10
-  timeToGenerate: 5
+  xRangeScreen: 5
+  timeToGenerate: 3
   maxRandX: 4
   spawnerDistance: 5
 --- !u!4 &72425606

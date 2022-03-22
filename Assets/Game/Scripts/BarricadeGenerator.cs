@@ -25,47 +25,50 @@ public class BarricadeGenerator : MonoBehaviour
     private float _timer;
 
     private int _lastXPose;
+
+    public static bool generate = false;
     // Start is called before the first frame update
 
 
     private void Start()
     {
         var ballPoseX = Mathf.RoundToInt(ball.transform.position.x);
-        ScreenXPoints = new[] {ballPoseX, ballPoseX + xRangeScreen, ballPoseX - xRangeScreen};
+        ScreenXPoints = new[] { ballPoseX + xRangeScreen, ballPoseX - xRangeScreen};
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(!spawner.isSpawnAllowed);
-        if (!spawner.isSpawnAllowed)
+        if (generate)
         {
-            if (_timer >= timeToGenerate)
-            {
-                _timer = 0;
-                var index = Mathf.RoundToInt(Random.Range(0, barricades.Length));
-                var barricade = barricades[index];
-                
-                if (barricade.name == "square")
-                {
-                   SquareInstantiate(barricade); 
-                }
-                
-                // if (barricade.name == "Line")
-                // {
-                //     SquareInstantiate(barricade); 
-                // }
+            generate = false;
+            BarricadeGenerate();
+        }
+    }
 
-                else
-                {
-                    LineInstantiate(barricade);  
-                }
-                
-                
-                
+    private  void BarricadeGenerate()
+    {
+        _timer += 1f;
+        if (_timer >= timeToGenerate)
+        {
+            _timer = 0;
+            var index = Mathf.RoundToInt(Random.Range(0, barricades.Length));
+            var barricade = barricades[index];
+
+            if (barricade.name == "square")
+            {
+                SquareInstantiate(barricade);
             }
 
-            _timer += Time.deltaTime;
+            // if (barricade.name == "Line")
+            // {
+            //     SquareInstantiate(barricade); 
+            // }
+
+            else
+            {
+                LineInstantiate(barricade);
+            }
         }
     }
 
@@ -93,7 +96,7 @@ public class BarricadeGenerator : MonoBehaviour
         var index = Mathf.RoundToInt(Random.Range(0, ScreenXPoints.Length));
         var xPos = ScreenXPoints[index];
         print(xPos);
-        
+
         var yPos = Mathf.RoundToInt(Random.Range(spawnerPos.y - 1.7f * spawnerDistance,
             spawnerPos.y - spawnerDistance));
 

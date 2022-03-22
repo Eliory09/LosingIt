@@ -100,6 +100,7 @@ public class SpawnerScript : MonoBehaviour
 
     public void AllowSpawn()
     {
+        BarricadeGenerator.generate = true;
         isSpawnAllowed = true;
         stopSpawn = false;
         NewTetrisBlock();
