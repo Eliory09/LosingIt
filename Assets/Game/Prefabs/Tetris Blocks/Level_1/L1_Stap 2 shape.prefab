@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6260598150290263819}
   - component: {fileID: 2287212411987252787}
   - component: {fileID: 5197030809973353827}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (2)
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 3588795292260869764}
   - component: {fileID: 2705796858358159630}
   - component: {fileID: 9146736921528880155}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (1)
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5460789680544106402}
   - component: {fileID: 8877717539421797378}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Shape
   m_TagString: Shape
   m_Icon: {fileID: 0}
@@ -310,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8003341284496184602}
   - component: {fileID: 5205957814250607710}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: L1_Stap 2 shape
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 2705691671963323830}
   - component: {fileID: 5240732795829920630}
   - component: {fileID: 5981387693151336769}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square
   m_TagString: Block
   m_Icon: {fileID: 0}
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 3662640522823201002}
   - component: {fileID: 5185001964589238204}
   - component: {fileID: 6038881367161541800}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Square (3)
   m_TagString: Block
   m_Icon: {fileID: 0}

@@ -11,7 +11,6 @@ public class TetrisBlock : MonoBehaviour
 
     //Restrictions Of movement if needed 
     public static int height = 100;
-
     public static int width = 100;
 
     // public static Transform[,] grid = new Transform[width, height];

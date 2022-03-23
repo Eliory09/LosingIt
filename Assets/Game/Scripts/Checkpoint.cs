@@ -9,6 +9,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            LevelMenager.addLevel = true;
             CheckpointsGenerator.GenerateNewPoint();
             Destroy(gameObject);
         }

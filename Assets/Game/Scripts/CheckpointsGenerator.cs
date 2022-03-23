@@ -23,11 +23,13 @@ public class CheckpointsGenerator : MonoBehaviour
 
     private void Awake()
     {
+        
         _shared = this;
     }
 
     public static void GenerateNewPoint()
     {
+        
         var delta = 90;
         var theta = Mathf.Deg2Rad * (Random.Range(-_shared.angleDelta, _shared.angleDelta) + delta);
         _shared._currentPoint = 
@@ -45,7 +47,9 @@ public class CheckpointsGenerator : MonoBehaviour
 
     public static void RemoveCheckpoint()
     {
+        
         if(_shared.currentCheckpoint != null)
             Destroy(_shared.currentCheckpoint.gameObject);
+        
     }
 }

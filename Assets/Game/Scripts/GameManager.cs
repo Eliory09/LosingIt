@@ -32,6 +32,10 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
+   
+
+   
+
     public static void InitializeGame()
     {
         MusicManager.SetLoop(true);
@@ -46,6 +50,7 @@ public class GameManager : MonoBehaviour
     public static void ActivateRoundLoss()
     {
         _shared.transitions.GetComponent<Animator>().SetTrigger("toFadeOut");
+
     }
     
     public static void ResetGame()

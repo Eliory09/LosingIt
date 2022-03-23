@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855480674}
   - component: {fileID: 1855480673}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Point Light 2D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -86,7 +86,7 @@ GameObject:
   - component: {fileID: 6698112213943427164}
   - component: {fileID: -4640990299387602684}
   - component: {fileID: 142185640}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Ball
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -18,59 +18,41 @@ public class BarricadeGenerator : MonoBehaviour
     private int[] ScreenXPoints;
     [SerializeField] private int xRangeScreen = 10;
 
-    [SerializeField] private float timeToGenerate = 2;
+    [SerializeField] public int maxIndex = 0;
+    [SerializeField] public float timeToGenerate = 5;
     [SerializeField] private float maxRandX = 3f;
     [SerializeField] private int spawnerDistance = 3;
 
     private float _timer;
 
     private int _lastXPose;
-
-    public static bool generate = false;
     // Start is called before the first frame update
 
 
     private void Start()
     {
         var ballPoseX = Mathf.RoundToInt(ball.transform.position.x);
-        ScreenXPoints = new[] { ballPoseX + xRangeScreen, ballPoseX - xRangeScreen};
+        ScreenXPoints = new[] {ballPoseX, ballPoseX + xRangeScreen, ballPoseX - xRangeScreen};
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (generate)
+        if (!spawner.stopSpawn && spawner.isSpawnAllowed)
         {
-            generate = false;
-            BarricadeGenerate();
-        }
-    }
-
-    private  void BarricadeGenerate()
-    {
-        _timer += 1f;
-        if (_timer >= timeToGenerate)
-        {
-            _timer = 0;
-            var index = Mathf.RoundToInt(Random.Range(0, barricades.Length));
-            var barricade = barricades[index];
-
-            if (barricade.name == "square")
+            if (_timer >= timeToGenerate)
             {
+                _timer = 0;
+                var index = Mathf.RoundToInt(Random.Range(0, maxIndex + 1));
+                print(maxIndex);
+                var barricade = barricades[index];
                 SquareInstantiate(barricade);
             }
 
-            // if (barricade.name == "Line")
-            // {
-            //     SquareInstantiate(barricade); 
-            // }
-
-            else
-            {
-                LineInstantiate(barricade);
-            }
+            _timer += Time.deltaTime;
         }
     }
+
 
     private void SquareInstantiate(GameObject barricade)
     {
@@ -78,12 +60,11 @@ public class BarricadeGenerator : MonoBehaviour
         var xPos = Mathf.RoundToInt(ball.transform.position.x);
         if (xPos == _lastXPose)
         {
-            xPos = Mathf.RoundToInt(Random.Range(xPos - 1, xPos + 1));
+            xPos = Mathf.RoundToInt(Random.Range(xPos - maxRandX, xPos + maxRandX));
         }
 
         // var xPos = Mathf.RoundToInt(Random.Range(spawnerPos.x - maxRandX, spawnerPos.x + maxRandX ));
-        var ypos = Mathf.RoundToInt(Random.Range(spawnerPos.y - 1.7f * spawnerDistance,
-            spawnerPos.y - spawnerDistance));
+        var ypos = Mathf.RoundToInt(spawnerPos.y - spawnerDistance);
 
         var newBaricadePos = new Vector3(xPos, ypos, 0);
         Instantiate(barricade, newBaricadePos, Quaternion.identity);
@@ -95,10 +76,9 @@ public class BarricadeGenerator : MonoBehaviour
 
         var index = Mathf.RoundToInt(Random.Range(0, ScreenXPoints.Length));
         var xPos = ScreenXPoints[index];
-        print(xPos);
+        // print(xPos);
 
-        var yPos = Mathf.RoundToInt(Random.Range(spawnerPos.y - 1.7f * spawnerDistance,
-            spawnerPos.y - spawnerDistance));
+        var yPos = Mathf.RoundToInt(spawnerPos.y - spawnerDistance*0.5f);
 
         var newBaricadePos = new Vector3(xPos, yPos, 0);
         Instantiate(barricade, newBaricadePos, Quaternion.identity);
