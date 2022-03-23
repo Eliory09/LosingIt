@@ -20,11 +20,12 @@ public class CinemachineCamerasController : MonoBehaviour
         _shared = this;
     }
 
-    public static void AddCamera(Vector3 location)
+    public static void AddCamera(Vector3 location, int orthographicSize = 7)
     {
         location.z = -10;
         var cam = Instantiate(_shared.vmCamera, location, quaternion.identity);
         cam.gameObject.name = "2D Camera";
+        cam.m_Lens.OrthographicSize = orthographicSize;
 
         _shared.vCams.Add(cam);
     }

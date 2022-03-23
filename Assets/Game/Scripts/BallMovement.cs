@@ -120,14 +120,19 @@ public class BallMovement : MonoBehaviour
         }
         else
         {
-            physics.velocity = Vector2.zero;
+            if (physics.velocity.x < 0.05f || physics.velocity.y < 0.05f)
+                physics.velocity = Vector2.zero;
+            else if (physics.velocity != Vector2.zero)
+                physics.velocity -= physics.velocity.normalized * 7 * speed * Time.deltaTime;
         }
     }
 
     public void ResetBall()
     {
+        var trail = GetComponent<TrailRenderer>();
         transform.position = initialPosition;
         physics.velocity = Vector2.zero;
+        trail.Clear();
     }
 
     private IEnumerator ResetCooldown(float time)

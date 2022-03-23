@@ -55,6 +55,9 @@ public class GameManager : MonoBehaviour
         
         objs = GameObject.FindGameObjectsWithTag("Barricades");
         foreach (var o in objs) Destroy(o);
+
+        objs = GameObject.FindGameObjectsWithTag("Orb");
+        foreach (var o in objs) Destroy(o);
         
 
         MusicManager.ChangeMusic(_shared.startMusic);
