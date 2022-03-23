@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using Scene = UnityEditor.SearchService.Scene;
 
@@ -18,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject platformPrefab;
     [SerializeField] private Vector3 initialPlatformLocation;
     [SerializeField] private Canvas transitions;
+    [SerializeField] private Vector3 zoomoutCameraInitialLocation;
     private static GameManager _shared;
 
     private void Awake()
@@ -71,7 +73,13 @@ public class GameManager : MonoBehaviour
     public static void ActivateTetrisSequence()
     {
         _shared.spawner.AllowSpawn();
+        CinemachineCamerasController.AddZoomoutCamera(_shared.zoomoutCameraInitialLocation, 0.3f);
         CheckpointsGenerator.GenerateNewPoint();
         MusicManager.ChangeMusic(_shared.gameMusic);
+    }
+
+    public static void UpdateSpawnerPosition(int distanceOfCamera)
+    {
+        _shared.spawner.ChangeCameraDistance(distanceOfCamera);
     }
 }

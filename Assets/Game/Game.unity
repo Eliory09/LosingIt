@@ -139,7 +139,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &72425605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -554,7 +554,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3000937992159076644, guid: ea74342fdcb74437082453570605fa31, type: 3}
       propertyPath: m_Lens.OrthographicSize
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3000937992159076645, guid: ea74342fdcb74437082453570605fa31, type: 3}
       propertyPath: m_RootOrder
@@ -602,7 +602,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3000937992159076647, guid: ea74342fdcb74437082453570605fa31, type: 3}
       propertyPath: m_Name
-      value: Main 2D Camera
+      value: 2D Camera
       objectReference: {fileID: 0}
     - target: {fileID: 3000937992159076647, guid: ea74342fdcb74437082453570605fa31, type: 3}
       propertyPath: m_TagString
@@ -786,7 +786,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1049982882
 RectTransform:
   m_ObjectHideFlags: 0
@@ -873,8 +873,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b1df0dcd26fc478c8c23ff6d41a3b34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  main: {fileID: 0}
+  main: {fileID: 1840363209}
   vmCamera: {fileID: 1027018729}
+  zoomoutCamera: {fileID: 7809993341904209270, guid: e74f55fb3bc0146078432413a209abff, type: 3}
 --- !u!4 &1095964399
 Transform:
   m_ObjectHideFlags: 0
@@ -946,7 +947,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -2
-  m_Sprite: {fileID: 21300000, guid: 81c20be1f5cab4fdb9d0873dd11ad6f4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 53467ace7ca274b0d9ba71ae64685242, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -965,8 +966,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105471029}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 50.0656, y: 39.3, z: 40}
-  m_LocalScale: {x: 2.4804828, y: 2.4804828, z: 20}
+  m_LocalPosition: {x: 50, y: 61, z: 40}
+  m_LocalScale: {x: 4.029799, y: 4.029799, z: 32.492054}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -1475,6 +1476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 7106463229258646900, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_BodyType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1649,7 +1654,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 9
+  orthographic size: 5
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1698,8 +1703,8 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 1
-    m_Time: 40
+    m_Style: 6
+    m_Time: 35
     m_CustomCurve:
       serializedVersion: 2
       m_Curve:
@@ -1724,7 +1729,7 @@ MonoBehaviour:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  m_CustomBlends: {fileID: 0}
+  m_CustomBlends: {fileID: 11400000, guid: 225f721fb3db9498cb95ab840d88040b, type: 2}
   m_CameraCutEvent:
     m_PersistentCalls:
       m_Calls: []
@@ -1808,6 +1813,7 @@ MonoBehaviour:
   platformPrefab: {fileID: 4712565767889197125, guid: 5a20544d2b6d94be1b3c7864668017c8, type: 3}
   initialPlatformLocation: {x: 50, y: 1.75, z: 0}
   transitions: {fileID: 1436068051}
+  zoomoutCameraInitialLocation: {x: 50, y: 7, z: -10}
 --- !u!4 &2123911777
 Transform:
   m_ObjectHideFlags: 0

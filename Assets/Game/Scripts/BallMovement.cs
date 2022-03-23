@@ -55,37 +55,72 @@ public class BallMovement : MonoBehaviour
 
     void FixedUpdate()
     {
+        // if (Input.GetKey(KeyCode.UpArrow))
+        // {
+        //     physics.AddForce(Vector2.up * speed);
+        //     _areArrowsPressed = true;
+        // }
+        //
+        // if (Input.GetKey(KeyCode.DownArrow))
+        // {
+        //     physics.AddForce(Vector2.down * speed);
+        //     _areArrowsPressed = true;
+        // }
+        //
+        // if (Input.GetKey(KeyCode.LeftArrow))
+        // {
+        //     physics.AddForce(Vector2.left * speed);
+        //     _areArrowsPressed = true;
+        // }
+        //
+        // if (Input.GetKey(KeyCode.RightArrow))
+        // {
+        //     physics.AddForce(Vector2.right * speed);
+        //     _areArrowsPressed = true;
+        // }
+        //
+        // if (_areArrowsPressed)
+        // {
+        //     _areArrowsPressed = false;
+        // }
+        // else
+        // {
+        //     physics.AddForce(-physics.velocity.normalized * 3 * speed);
+        // }
+        Vector2 currentVel = Vector2.zero;
+        
         if (Input.GetKey(KeyCode.UpArrow))
         {
-            physics.AddForce(Vector2.up * speed);
+            currentVel += Vector2.up;
             _areArrowsPressed = true;
         }
 
         if (Input.GetKey(KeyCode.DownArrow))
         {
-            physics.AddForce(Vector2.down * speed);
+            currentVel += Vector2.down;
             _areArrowsPressed = true;
         }
 
         if (Input.GetKey(KeyCode.LeftArrow))
         {
-            physics.AddForce(Vector2.left * speed);
+            currentVel += Vector2.left;
             _areArrowsPressed = true;
         }
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
-            physics.AddForce(Vector2.right * speed);
+            currentVel += Vector2.right;
             _areArrowsPressed = true;
         }
 
         if (_areArrowsPressed)
         {
             _areArrowsPressed = false;
+            physics.velocity = currentVel * speed;
         }
         else
         {
-            physics.AddForce(-physics.velocity.normalized * 3 * speed);
+            physics.velocity = Vector2.zero;
         }
     }
 

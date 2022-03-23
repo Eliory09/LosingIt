@@ -1,14 +1,17 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 public class CinemachineCamerasController : MonoBehaviour
 {
     [SerializeField] private CinemachineBrain main;
     [SerializeField] private CinemachineVirtualCamera vmCamera;
+    [SerializeField] private CinemachineVirtualCamera zoomoutCamera;
     private static CinemachineCamerasController _shared;
     private List<CinemachineVirtualCamera> vCams = new List<CinemachineVirtualCamera>();
 
@@ -21,6 +24,8 @@ public class CinemachineCamerasController : MonoBehaviour
     {
         location.z = -10;
         var cam = Instantiate(_shared.vmCamera, location, quaternion.identity);
+        cam.gameObject.name = "2D Camera";
+
         _shared.vCams.Add(cam);
     }
 
@@ -31,5 +36,20 @@ public class CinemachineCamerasController : MonoBehaviour
             if (cinemachineVirtualCamera != null)
                 Destroy(cinemachineVirtualCamera.gameObject);
         }
+    }
+    
+    public static void AddZoomoutCamera(Vector3 position, float duration)
+    {
+        _shared.StartCoroutine(_shared.SetupZoomout(position, duration));
+    }
+
+    private IEnumerator SetupZoomout(Vector3 position, float duration)
+    {
+        var zoCam = Instantiate(_shared.zoomoutCamera, position, quaternion.identity);
+        zoCam.gameObject.name = "ZoomoutCamera";
+        GameManager.UpdateSpawnerPosition((int) zoCam.m_Lens.OrthographicSize);
+        _shared.vCams.Add(zoCam);
+        yield return new WaitForSeconds(duration);
+        zoCam.Priority = 0;
     }
 }

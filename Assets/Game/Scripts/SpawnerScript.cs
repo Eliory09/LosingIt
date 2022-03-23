@@ -19,7 +19,7 @@ public class SpawnerScript : MonoBehaviour
     public float maxSpaceBlockToSpawnerX = 1.2f;
     public GameObject ball;
 
-    [SerializeField] private int camaraDistance;
+    [SerializeField] private int cameraDistance;
 
     [SerializeField] private int deleteLength = 10;
     public bool stopSpawn;
@@ -35,7 +35,7 @@ public class SpawnerScript : MonoBehaviour
         {
             var pos = Camera.main.transform.position;
             var roundX = Mathf.RoundToInt(pos.x);
-            var roundY = Mathf.RoundToInt(pos.y) + camaraDistance;
+            var roundY = Mathf.RoundToInt(pos.y) + cameraDistance;
             var newPos = new Vector3(roundX, roundY, 10);
             transform.position = newPos;
         }
@@ -147,5 +147,10 @@ public class SpawnerScript : MonoBehaviour
             } 
         }
        
+    }
+    
+    public void ChangeCameraDistance(int distance)
+    {
+        cameraDistance = distance;
     }
 }
