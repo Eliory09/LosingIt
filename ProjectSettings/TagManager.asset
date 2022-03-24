@@ -15,8 +15,8 @@ TagManager:
   - Background
   - Water
   - UI
-  - 
-  - 
+  - barricadeColliding
+  - barricadeNotColliding
   - 
   - 
   - 

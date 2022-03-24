@@ -153,16 +153,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barricades:
-  - {fileID: 1274924804930208886, guid: aa9a2275ab6e869448431850d76d9186, type: 3}
   - {fileID: 6361768268034918760, guid: a074f6ad37a4d8c4792bc5fd8b49e176, type: 3}
-  - {fileID: 8755828237767760802, guid: 79021a4c0b5676e4f9bdab5eea63eabc, type: 3}
-  - {fileID: 2275617206309592052, guid: 1e41fa72cd1c2494594606106897792b, type: 3}
+  - {fileID: 3096726418706829730, guid: 603a93e5942c4644ebc4e7d7b099a9fe, type: 3}
+  - {fileID: 6101182881555183957, guid: 78c0947231c359848b0fb1a25998ee4e, type: 3}
+  - {fileID: 4426633176809856593, guid: 5355bb6aedcbff142a63ea6c188558dd, type: 3}
+  - {fileID: 7377169952322280627, guid: 4fe82ad49f72fbf469f296a6964d67ba, type: 3}
+  - {fileID: 3603353335017327625, guid: 8d9e54027b61edc44bb84dc1e942400d, type: 3}
+  - {fileID: 2619059517057507011, guid: 9237260bddd1a3a4cab8d56980f6d39d, type: 3}
+  - {fileID: 4609764071860493140, guid: 455b45fa58bc4e742bdb0b983c7cb6cf, type: 3}
+  - {fileID: 6362266733716869130, guid: c21eba4c551ffc244a7abd58429b0144, type: 3}
+  - {fileID: 4465783974145707090, guid: da223706d39a86549ad19c6055d94e82, type: 3}
+  - {fileID: 8094207815951159022, guid: a74d83ee18e71a944a254ea30a543804, type: 3}
+  - {fileID: 5587405690941732094, guid: e86c671a50a24974ca8436b0176b83fa, type: 3}
+  - {fileID: 3823056816494034112, guid: ec3d4ab4173b1aa4fa014853722325d7, type: 3}
+  - {fileID: 3806775646810728685, guid: 5a21698ffc49f594b83ad5c4c413f6f8, type: 3}
+  - {fileID: 581034073856307409, guid: 758bac9eca6e3704f8d6e5f930abc997, type: 3}
+  - {fileID: 6425000202657483745, guid: c39bab7e38001c74aafb01841f27b570, type: 3}
+  - {fileID: 6666474146672787158, guid: 3706a68efdb1fee4385070d1815617c9, type: 3}
+  - {fileID: 1285214925380674910, guid: cc57bcb90c60871439ab3f05f4c0f251, type: 3}
+  - {fileID: 8645758876755375648, guid: a198bebc3de754845bfff0f4eb198acd, type: 3}
+  - {fileID: 1110465009203815868, guid: 9b88380ab8e6e4d4f8a0bb2bb8ce554f, type: 3}
   spawner: {fileID: 1649863972}
   ball: {fileID: 142185637}
   xRangeScreen: 5
+  maxIndex: 0
   timeToGenerate: 3
   maxRandX: 4
-  spawnerDistance: 5
+  spawnerDistance: 3
 --- !u!4 &72425606
 Transform:
   m_ObjectHideFlags: 0
@@ -496,6 +513,51 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7106463229258646902, guid: 6cf6aa1ead34a45b88f22ccf7ccd74c9, type: 3}
   m_PrefabInstance: {fileID: 1697455487}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &683972148
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 683972149}
+  - component: {fileID: 683972150}
+  m_Layer: 0
+  m_Name: LevelManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &683972149
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683972148}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.2439156, y: 15.6053295, z: 18.464218}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2123911777}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &683972150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 683972148}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f5c0f57831d57742a12018efe8a882b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _barricadeGenerator: {fileID: 72425605}
+  timeLowerBarricade: 0.75
 --- !u!1 &712632889
 GameObject:
   m_ObjectHideFlags: 0
@@ -1305,6 +1367,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: backGrounds.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: maxSpaceBlockToSpawner
       value: 10
       objectReference: {fileID: 0}
@@ -1324,6 +1390,14 @@ PrefabInstance:
       propertyPath: tetrisBlocks.Array.size
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: backGrounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 1105471029}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: backGrounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 3824607998300202544, guid: f7879c4d1b55c34429a91573439b3bcd, type: 3}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: tetrisBlocks.Array.data[0]
       value: 
@@ -1463,6 +1537,10 @@ PrefabInstance:
     - target: {fileID: 7106463229258646858, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
       propertyPath: m_Name
       value: Ball
+      objectReference: {fileID: 0}
+    - target: {fileID: 7106463229258646900, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_BodyType
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646902, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
       propertyPath: m_RootOrder
@@ -1808,7 +1886,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 48.8436, y: 2.9837017, z: -9.316161}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 683972149}
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
