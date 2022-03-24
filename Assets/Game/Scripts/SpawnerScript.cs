@@ -49,14 +49,7 @@ public class SpawnerScript : MonoBehaviour
         if (Camera.main is { })
         {
             var pos = Camera.main.transform.position;
-            var addToX = Random.Range(-xChangeMax, xChangeMax);
-            if (_firstSpawn )
-            {
-                addToX = 0;
-                // _firstSpawn = false;
-            }
-            
-            var roundX = Mathf.RoundToInt(pos.x + addToX);
+            var roundX = Mathf.RoundToInt(pos.x);
             var roundY = Mathf.RoundToInt(pos.y) + cameraDistance;
             var newPos = new Vector3(roundX, roundY, 10);
             transform.position = newPos;
@@ -117,7 +110,9 @@ public class SpawnerScript : MonoBehaviour
     {
         // if (IsValidToSpawn())
         // {
+            
             var newPos = transform.position;
+            newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));
             if (_firstSpawn)
             {
                 newPos.x = _originalX;
