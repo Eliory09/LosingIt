@@ -10,7 +10,7 @@ using Random = UnityEngine.Random;
 public class SpawnerScript : MonoBehaviour
 {
     // private Vector2 originPosition;
-    public GameObject[] tetrisBlocks;
+    public List<GameObject> tetrisBlocks;
     [SerializeField] private GameObject[] backGrounds;
     private GameObject _currentBackground;
     [SerializeField] private float backGroundHeight = 120f;
@@ -98,7 +98,7 @@ public class SpawnerScript : MonoBehaviour
     {
         if (IsValidToSpawn())
         {
-            lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Length)], transform.position,
+            lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], transform.position,
                 Quaternion.identity) as GameObject;
             Destroy(lastBlock.gameObject, 30);
             isSpawnAllowed = false;

@@ -44,7 +44,6 @@ public class BarricadeGenerator : MonoBehaviour
             {
                 _timer = 0;
                 var index = Mathf.RoundToInt(Random.Range(0, maxIndex + 1));
-                print(maxIndex);
                 var barricade = barricades[index];
                 SquareInstantiate(barricade);
             }
