@@ -25,7 +25,6 @@ public class LevelManager : MonoBehaviour
     public static void ResetLevel()
     {
         _shared.currentLevel = 0;
-        print(_shared.currentLevel);
     }
 
     public static void LoadNextLevel()
@@ -59,12 +58,13 @@ public class LevelManager : MonoBehaviour
 
     private static void Level1()
     {
-        _shared._spawner.tetrisBlocks = _shared._blocks2;
+        _shared._spawner.tetrisBlocks = _shared._blocks3;
+        // CinemachineCamerasController.ActivateCameraTilt();
     }
     
     private static void Level2()
     {
-        _shared._spawner.tetrisBlocks = _shared._blocks1;
+        _shared._spawner.tetrisBlocks = _shared._blocks2;
     }
     
     private static void Level3()

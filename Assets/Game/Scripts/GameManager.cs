@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     public static void ActivateTetrisSequence()
     {
         _shared.spawner.AllowSpawn();
-        CinemachineCamerasController.AddZoomoutCamera(_shared.zoomoutCameraInitialLocation, 0.3f);
+        CinemachineCamerasController.AddZoomCamera(_shared.zoomoutCameraInitialLocation, 0.3f);
         CheckpointsGenerator.GenerateNewPoint();
         MusicManager.ChangeMusic(_shared.gameMusic);
         LevelManager.LoadNextLevel();
