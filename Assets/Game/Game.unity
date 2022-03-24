@@ -555,7 +555,12 @@ MonoBehaviour:
   - {fileID: 8186118838835232838, guid: 6c608fc3308414eb8a1f9b2db2467b4c, type: 3}
   - {fileID: 4457001015001779281, guid: 6df195bfe0b1e48c888d7a6c4755cc82, type: 3}
   - {fileID: 609902958168703600, guid: f2d85e934488742ba991ce35b4c8aad4, type: 3}
-  _blocks3: []
+  _blocks3:
+  - {fileID: 2318192354174035810, guid: 10351324641c24d228db347ce5817e82, type: 3}
+  - {fileID: 7679735508564960164, guid: 344c06af5c7a7498f9678378ef8f063c, type: 3}
+  - {fileID: 7055939238212796376, guid: 980bd1065215344b0b827e50a4b1583f, type: 3}
+  - {fileID: 2847353807136214353, guid: 2104311d7a75c48809b8404d22f0411a, type: 3}
+  - {fileID: 8186118838835232838, guid: 8ec52dc80b06849ed9f331af37e28476, type: 3}
   _blocks4: []
   _blocks5: []
 --- !u!4 &278767613
@@ -957,6 +962,8 @@ MonoBehaviour:
   main: {fileID: 1840363209}
   vmCamera: {fileID: 1027018729}
   zoomoutCamera: {fileID: 7809993341904209270, guid: e74f55fb3bc0146078432413a209abff, type: 3}
+  initial2DCamera: {fileID: 1027018729}
+  tiltEffectSpeed: 5
 --- !u!4 &1095964399
 Transform:
   m_ObjectHideFlags: 0
@@ -1155,8 +1162,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   radius: 30
-  angleDelta: 0
-  checkpointObj: {fileID: 3030667471429162771, guid: 0da0ef1127ebb4e3295559ec5e8bb806, type: 3}
+  angleDelta: 30
+  checkpointObj: {fileID: 1335746035}
   ball: {fileID: 142185637}
 --- !u!4 &1272428287
 Transform:
@@ -1552,6 +1559,30 @@ PrefabInstance:
     - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
       propertyPath: m_Time
       value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime1
+      value: 31997
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.atime2
+      value: 65535
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.key0.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.key2.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 142185640, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
+      propertyPath: m_Parameters.colorGradient.m_NumAlphaKeys
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7106463229258646858, guid: 595807a2a82da4d9cb7fa47260c25347, type: 3}
       propertyPath: m_Name

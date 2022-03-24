@@ -11,7 +11,7 @@ public class Checkpoint : MonoBehaviour
         {
             LevelManager.LoadNextLevel();
             CheckpointsGenerator.GenerateNewPoint();
-            Destroy(gameObject);
+            // Destroy(gameObject);
         }
     }
 }
