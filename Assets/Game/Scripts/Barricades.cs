@@ -6,13 +6,13 @@ using UnityEngine;
 public class Barricades : MonoBehaviour
 {
     private bool _created = false;
-    private bool enterGrid = false;
-    [SerializeField] private float dToGrid = 10;
+    // private bool enterGrid = false;
+    // [SerializeField] private float dToGrid = 10;
 
     [SerializeField] private GameObject spawner;
 
 
-    private float timer = 0; 
+    // private float timer = 0; 
 
     // Start is called before the first frame update
     private void Start()

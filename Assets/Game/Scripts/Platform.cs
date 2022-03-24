@@ -14,7 +14,7 @@ public class Platform : MonoBehaviour
         var minY = Mathf.RoundToInt(pos.y - (scale.y / 2));
         var maxX = Mathf.RoundToInt(pos.x + (scale.x / 2));
         var maxY = Mathf.RoundToInt(pos.y + (scale.y / 2));
-        TetrisBlock.AddBlocksToGrid(transform, minX, maxX, minY, maxY);
+        // tetris add to grid
     }
     private void OnDisable()
     {

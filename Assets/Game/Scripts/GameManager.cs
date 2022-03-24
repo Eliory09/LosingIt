@@ -32,10 +32,6 @@ public class GameManager : MonoBehaviour
         InitializeGame();
     }
 
-   
-
-   
-
     public static void InitializeGame()
     {
         MusicManager.SetLoop(true);
@@ -68,6 +64,7 @@ public class GameManager : MonoBehaviour
         MusicManager.ChangeMusic(_shared.startMusic);
         _shared.spawner.DisableSpawn();
         TetrisBlock.ResetGrid();
+        LevelManager.ResetLevel();
         
         var platform = Instantiate(_shared.platformPrefab, _shared.initialPlatformLocation, Quaternion.identity);
         platform.GetComponent<Platform>().AddToGrid();
@@ -81,9 +78,10 @@ public class GameManager : MonoBehaviour
     public static void ActivateTetrisSequence()
     {
         _shared.spawner.AllowSpawn();
-        CinemachineCamerasController.AddZoomoutCamera(_shared.zoomoutCameraInitialLocation, 0.3f);
+        CinemachineCamerasController.AddZoomCamera(_shared.zoomoutCameraInitialLocation, 0.3f);
         CheckpointsGenerator.GenerateNewPoint();
         MusicManager.ChangeMusic(_shared.gameMusic);
+        LevelManager.LoadNextLevel();
     }
 
     public static void UpdateSpawnerPosition(int distanceOfCamera)
