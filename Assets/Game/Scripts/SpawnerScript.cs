@@ -111,17 +111,17 @@ public class SpawnerScript : MonoBehaviour
         // if (IsValidToSpawn())
         // {
             
-            var newPos = transform.position;
-            newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));
-            if (_firstSpawn)
-            {
-                newPos.x = _originalX;
-                _firstSpawn = false;
-            }
-            lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
-                Quaternion.identity) as GameObject;
-            lastBlock.transform.SetParent(father.transform);
-            Destroy(lastBlock.gameObject, 30);
+        var newPos = transform.position;
+        newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));
+        if (_firstSpawn)
+        {
+            newPos.x = _originalX;
+            _firstSpawn = false;
+        }
+        lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
+            Quaternion.identity) as GameObject;
+        lastBlock.transform.SetParent(father.transform);
+        Destroy(lastBlock.gameObject, 30);
             
         // }
     }
