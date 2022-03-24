@@ -63,7 +63,7 @@ public class BarricadeGenerator : MonoBehaviour
         }
 
         // var xPos = Mathf.RoundToInt(Random.Range(spawnerPos.x - maxRandX, spawnerPos.x + maxRandX ));
-        var ypos = Mathf.RoundToInt(spawnerPos.y - spawnerDistance);
+        var ypos = Mathf.RoundToInt(spawnerPos.y + spawnerDistance);
 
         var newBaricadePos = new Vector3(xPos, ypos, 0);
         Instantiate(barricade, newBaricadePos, Quaternion.identity);

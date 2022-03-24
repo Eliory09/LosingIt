@@ -32,7 +32,7 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private int xChangeMax = 5;
     private bool _firstSpawn = true;
     private float _originalX;
-    
+
     [SerializeField] private int deleteLength = 10;
     public bool stopSpawn;
 
@@ -54,7 +54,7 @@ public class SpawnerScript : MonoBehaviour
             var newPos = new Vector3(roundX, roundY, 10);
             transform.position = newPos;
         }
-        
+
 
         if (isSpawnAllowed && EnoughSpaceToSpawn() && !stopSpawn)
         {
@@ -71,8 +71,6 @@ public class SpawnerScript : MonoBehaviour
         RemoveFromGrid();
         MakeGridBigger();
         currentYPose = transform.position.y;
-        
-        
     }
 
     private void MakeGridBigger()
@@ -110,19 +108,26 @@ public class SpawnerScript : MonoBehaviour
     {
         // if (IsValidToSpawn())
         // {
-            
+
         var newPos = transform.position;
-        newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));
+        newPos.x = Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax);
         if (_firstSpawn)
         {
             newPos.x = _originalX;
             _firstSpawn = false;
         }
+
+        while (!(IsValidToSpawn(newPos.x, newPos.y)))
+        {
+            newPos.x = Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax);  
+            print(newPos.x);
+        }
+
         lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
             Quaternion.identity) as GameObject;
         lastBlock.transform.SetParent(father.transform);
         Destroy(lastBlock.gameObject, 30);
-            
+
         // }
     }
 
@@ -173,27 +178,25 @@ public class SpawnerScript : MonoBehaviour
         stopSpawn = true;
     }
 
-    private bool IsValidToSpawn()
+    private bool IsValidToSpawn(float xPos, float yPos)
     {
-        var position = transform.position;
-        var xPos = Mathf.RoundToInt(position.x);
-        var yPos = Mathf.RoundToInt(position.y);
-        for (int i = xPos - 4; i <= xPos + 4; i++)
+
+        var x = Mathf.RoundToInt(xPos);
+        var y = Mathf.RoundToInt(yPos);
+        for (var i = x - 4; i <= x + 4; i++)
         {
-            // // for (int j = yPos - 1; j <= yPos + 1; j++)
-            // {
-            //     if (i > 0 && j > 0)
-            //     {
-            if (i > 0 )
+            for (var j = y - 1; j <= y + 1; j++)
             {
-                if (TetrisBlock.grid[i, yPos])
+                if (i >= 0 && j >= 0)
                 {
-                    return false;
-                }   
+                    // print(i);
+                    // print(j);
+                    if (TetrisBlock.grid[i, j])
+                    {
+                        return false;
+                    }
+                }
             }
-            
-            //     }
-            // }
         }
 
         return true;
