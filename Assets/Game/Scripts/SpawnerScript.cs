@@ -110,7 +110,7 @@ public class SpawnerScript : MonoBehaviour
         // {
 
         var newPos = transform.position;
-        newPos.x = Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax);
+            newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));  
         if (_firstSpawn)
         {
             newPos.x = _originalX;
@@ -119,8 +119,7 @@ public class SpawnerScript : MonoBehaviour
 
         while (!(IsValidToSpawn(newPos.x, newPos.y)))
         {
-            newPos.x = Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax);  
-            print(newPos.x);
+            newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));  
         }
 
         lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
