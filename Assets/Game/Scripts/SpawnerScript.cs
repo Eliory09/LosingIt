@@ -9,6 +9,8 @@ using Random = UnityEngine.Random;
 
 public class SpawnerScript : MonoBehaviour
 {
+    [SerializeField] private GameObject father;
+
     // private Vector2 originPosition;
     public List<GameObject> tetrisBlocks;
     [SerializeField] private GameObject[] backGrounds;
@@ -27,6 +29,10 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private int gridExpand = 2;
 
 
+    [SerializeField] private int xChangeMax = 5;
+    private bool _firstSpawn = true;
+    private float _originalX;
+    
     [SerializeField] private int deleteLength = 10;
     public bool stopSpawn;
 
@@ -34,6 +40,7 @@ public class SpawnerScript : MonoBehaviour
 
     private void Awake()
     {
+        _originalX = transform.position.x;
         _currentBackground = backGrounds[0];
     }
 
@@ -47,9 +54,11 @@ public class SpawnerScript : MonoBehaviour
             var newPos = new Vector3(roundX, roundY, 10);
             transform.position = newPos;
         }
+        
 
-        if (isSpawnAllowed & EnoughSpaceToSpawn() & (!stopSpawn))
+        if (isSpawnAllowed && EnoughSpaceToSpawn() && !stopSpawn)
         {
+            isSpawnAllowed = false;
             NewTetrisBlock();
         }
 
@@ -62,6 +71,8 @@ public class SpawnerScript : MonoBehaviour
         RemoveFromGrid();
         MakeGridBigger();
         currentYPose = transform.position.y;
+        
+        
     }
 
     private void MakeGridBigger()
@@ -91,18 +102,28 @@ public class SpawnerScript : MonoBehaviour
         var oldPos = _currentBackground.transform.position;
         var newPos = new Vector3(oldPos.x, oldPos.y + backGroundHeight, oldPos.z);
         var obj = Instantiate(backGrounds[1], newPos, quaternion.identity);
+        obj.transform.SetParent(father.transform);
         _currentBackground = obj;
     }
 
     public void NewTetrisBlock()
     {
-        if (IsValidToSpawn())
-        {
-            lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], transform.position,
+        // if (IsValidToSpawn())
+        // {
+            
+            var newPos = transform.position;
+            newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));
+            if (_firstSpawn)
+            {
+                newPos.x = _originalX;
+                _firstSpawn = false;
+            }
+            lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
                 Quaternion.identity) as GameObject;
+            lastBlock.transform.SetParent(father.transform);
             Destroy(lastBlock.gameObject, 30);
-            isSpawnAllowed = false;
-        }
+            
+        // }
     }
 
     private bool BrickNotColliding()
@@ -143,7 +164,7 @@ public class SpawnerScript : MonoBehaviour
         // BarricadeGenerator.generate = true;
         isSpawnAllowed = true;
         stopSpawn = false;
-        NewTetrisBlock();
+        // NewTetrisBlock();
     }
 
     public void DisableSpawn()
@@ -156,13 +177,23 @@ public class SpawnerScript : MonoBehaviour
     {
         var position = transform.position;
         var xPos = Mathf.RoundToInt(position.x);
-        var yPos = Mathf.RoundToInt(position.y - 3);
-        for (int i = xPos - 9; i <= xPos + 9; i++)
+        var yPos = Mathf.RoundToInt(position.y);
+        for (int i = xPos - 4; i <= xPos + 4; i++)
         {
-            if (TetrisBlock.grid[xPos, yPos])
+            // // for (int j = yPos - 1; j <= yPos + 1; j++)
+            // {
+            //     if (i > 0 && j > 0)
+            //     {
+            if (i > 0 )
             {
-                return false;
+                if (TetrisBlock.grid[i, yPos])
+                {
+                    return false;
+                }   
             }
+            
+            //     }
+            // }
         }
 
         return true;
@@ -192,7 +223,7 @@ public class SpawnerScript : MonoBehaviour
         cameraDistance = distance;
     }
 
-    public static bool DistanceFromSpawner(GameObject obj, float requiredD = 0)
+    public static bool DistanceFromSpawner(GameObject obj, float requiredD)
     {
         if (obj.CompareTag("Barricades"))
         {
