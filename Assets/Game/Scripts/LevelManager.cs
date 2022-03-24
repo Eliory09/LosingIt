@@ -58,7 +58,7 @@ public class LevelManager : MonoBehaviour
 
     private static void Level1()
     {
-        _shared._spawner.tetrisBlocks = _shared._blocks3;
+        _shared._spawner.tetrisBlocks = _shared._blocks1;
         // CinemachineCamerasController.ActivateCameraTilt();
     }
     

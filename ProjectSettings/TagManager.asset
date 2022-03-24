@@ -8,6 +8,7 @@ TagManager:
   - Shape
   - Barricades
   - Orb
+  - InitialPlatform
   layers:
   - Default
   - TransparentFX

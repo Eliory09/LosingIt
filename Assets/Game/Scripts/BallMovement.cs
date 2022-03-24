@@ -38,7 +38,7 @@ public class BallMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Block"))
+        if (other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("InitialPlatform"))
         {
             counter++;
         }
@@ -46,7 +46,7 @@ public class BallMovement : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Block"))
+        if (other.gameObject.CompareTag("Block") || other.gameObject.CompareTag("InitialPlatform"))
         {
             counter--;
         }

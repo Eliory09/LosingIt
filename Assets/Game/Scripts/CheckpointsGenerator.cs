@@ -23,7 +23,6 @@ public class CheckpointsGenerator : MonoBehaviour
 
     private void Awake()
     {
-        
         _shared = this;
     }
 
@@ -41,6 +40,7 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared._currentPoint.x = Mathf.RoundToInt(_shared._currentPoint.x);
         _shared._currentPoint.y = Mathf.RoundToInt(_shared._currentPoint.y);
         _shared.currentCheckpoint = Instantiate(_shared.checkpointObj);
+        _shared.currentCheckpoint.GetComponent<Checkpoint>().AddCheckpointToGrid();
         _shared.currentCheckpoint.transform.position = _shared._currentPoint;
         CinemachineCamerasController.AddCamera(_shared.currentCheckpoint.transform.position);
     }

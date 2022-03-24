@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
         MusicManager.ChangeMusic(_shared.startMusic);
         _shared.spawner.DisableSpawn();
         TetrisBlock.ResetGrid();
-        _shared.initialPlatform.GetComponent<Platform>().AddToGrid();
+        _shared.initialPlatform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         _shared.ball.ResetBall();
         Instantiate(_shared.orb, _shared.orbInitialLocation, Quaternion.identity);
     }
@@ -66,8 +66,8 @@ public class GameManager : MonoBehaviour
         TetrisBlock.ResetGrid();
         LevelManager.ResetLevel();
         
-        var platform = Instantiate(_shared.platformPrefab, _shared.initialPlatformLocation, Quaternion.identity);
-        platform.GetComponent<Platform>().AddToGrid();
+        // var platform = Instantiate(_shared.platformPrefab, _shared.initialPlatformLocation, Quaternion.identity);
+        // platform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         CheckpointsGenerator.RemoveCheckpoint();
         CinemachineCamerasController.ResetCameras();
         
