@@ -69,6 +69,7 @@ public class GameManager : MonoBehaviour
         // var platform = Instantiate(_shared.platformPrefab, _shared.initialPlatformLocation, Quaternion.identity);
         // platform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         CheckpointsGenerator.RemoveCheckpoint();
+        _shared.initialPlatform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         CinemachineCamerasController.ResetCameras();
         
         _shared.ball.ResetBall();
