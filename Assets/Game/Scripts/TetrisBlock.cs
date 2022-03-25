@@ -10,7 +10,7 @@ public class TetrisBlock : MonoBehaviour
     public float fallTime = 0.8f;
 
     //Restrictions Of movement if needed 
-    public static int height = 100;
+    public static int height = 200;
     public static int width = 100;
 
     // public static Transform[,] grid = new Transform[width, height];

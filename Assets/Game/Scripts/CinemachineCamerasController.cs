@@ -106,4 +106,13 @@ public class CinemachineCamerasController : MonoBehaviour
     {
         return _shared.cameraBlends.m_CustomBlends[1].m_Blend.m_Time;
     }
+    
+    public static void SetCameraTransitionsStyle(CinemachineBlendDefinition.Style style)
+    {
+        for (int i = 1; i < _shared.cameraBlends.m_CustomBlends.Length; i++)
+        {
+            _shared.cameraBlends.m_CustomBlends[i].m_Blend.m_Style = style;
+        }
+        _shared.main.m_DefaultBlend.m_Style = style;
+    }
 }

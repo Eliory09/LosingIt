@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Cinemachine;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour
@@ -30,6 +31,8 @@ public class LevelManager : MonoBehaviour
         _shared.currentLevel = 0;
         _shared._inverter.SetActive(false);
         CinemachineCamerasController.DisableCameraTilt();
+        CheckpointsGenerator.ChangeRadius(28f);
+        CinemachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.EaseInOut);
     }
 
     public static void LoadNextLevel()
@@ -66,20 +69,23 @@ public class LevelManager : MonoBehaviour
     private static void Level2()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks2;
-        CinemachineCamerasController.SetCameraTransitionsDuration(29);
-        CheckpointsGenerator.ChangeRadius(34f);
+        CinemachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.Linear);
+        CinemachineCamerasController.SetCameraTransitionsDuration(30f);
+        CheckpointsGenerator.ChangeRadius(35f);
     }
     
     private static void Level3()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks3;
         CinemachineCamerasController.ActivateCameraTilt();
+        CinemachineCamerasController.SetCameraTransitionsDuration(36f);
         CheckpointsGenerator.ChangeRadius(40f);
+
     }
     
     private static void Level4()
     { 
-        CinemachineCamerasController.SetCameraTransitionsDuration(27);
+        CinemachineCamerasController.SetCameraTransitionsDuration(33f);
         _shared._spawner.tetrisBlocks = _shared._blocks4;
         _shared._inverter.SetActive(true);
     }
