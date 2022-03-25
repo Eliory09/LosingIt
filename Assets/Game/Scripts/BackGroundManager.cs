@@ -44,7 +44,6 @@ public class BackGroundManager : MonoBehaviour
         if (_counter)
         {
             obj.transform.Rotate(180 , 0 , 0);
-            print("kaka");
         }
 
         _counter = !_counter;

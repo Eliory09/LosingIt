@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour
 
     public static void InitializeGame()
     {
+        _shared.spawner._firstSpawn = true;
         MusicManager.SetLoop(true);
         MusicManager.ChangeMusic(_shared.startMusic);
         _shared.spawner.DisableSpawn();

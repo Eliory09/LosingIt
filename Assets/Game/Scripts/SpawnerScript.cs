@@ -29,7 +29,7 @@ public class SpawnerScript : MonoBehaviour
 
 
     [SerializeField] private int xChangeMax = 5;
-    private bool _firstSpawn = true;
+    public bool _firstSpawn = true;
     private float _originalX;
 
     [SerializeField] private int deleteLength = 10;
