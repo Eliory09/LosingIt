@@ -66,18 +66,20 @@ public class LevelManager : MonoBehaviour
     private static void Level2()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks2;
-        CinemachineCamerasController.ChangeCameraTransitionsDuration(26);
+        CinemachineCamerasController.SetCameraTransitionsDuration(29);
+        CheckpointsGenerator.ChangeRadius(34f);
     }
     
     private static void Level3()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks3;
-        CinemachineCamerasController.ChangeCameraTransitionsDuration(23);
         CinemachineCamerasController.ActivateCameraTilt();
+        CheckpointsGenerator.ChangeRadius(40f);
     }
     
     private static void Level4()
     { 
+        CinemachineCamerasController.SetCameraTransitionsDuration(27);
         _shared._spawner.tetrisBlocks = _shared._blocks4;
         _shared._inverter.SetActive(true);
     }

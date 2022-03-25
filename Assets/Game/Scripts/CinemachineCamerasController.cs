@@ -31,7 +31,7 @@ public class CinemachineCamerasController : MonoBehaviour
         _shared = this;
         _shared.vCams.Add(initial2DCamera);
         _currentCam = initial2DCamera;
-        ChangeCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
+        SetCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
     }
 
     private void Update()
@@ -63,7 +63,7 @@ public class CinemachineCamerasController : MonoBehaviour
                 Destroy(cinemachineVirtualCamera.gameObject);
         }
         _shared._currentCam = _shared.vCams[0];
-        ChangeCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
+        SetCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
     }
     
     public static void AddZoomCamera(Vector3 position, float duration)
@@ -92,11 +92,18 @@ public class CinemachineCamerasController : MonoBehaviour
         _shared._tiltActivated = false;
     }
 
-    public static void ChangeCameraTransitionsDuration(float transitionDuration)
+    public static void SetCameraTransitionsDuration(float transitionDuration)
     {
         for (int i = 1; i < _shared.cameraBlends.m_CustomBlends.Length; i++)
         {
             _shared.cameraBlends.m_CustomBlends[i].m_Blend.m_Time = transitionDuration;
         }
+
+        _shared.main.m_DefaultBlend.m_Time = transitionDuration;
+    }
+
+    public static float GetCameraTransitionsDuration()
+    {
+        return _shared.cameraBlends.m_CustomBlends[1].m_Blend.m_Time;
     }
 }

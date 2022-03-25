@@ -1084,7 +1084,7 @@ MonoBehaviour:
   initial2DCamera: {fileID: 1027018729}
   tiltEffectSpeed: 5
   cameraBlends: {fileID: 11400000, guid: 225f721fb3db9498cb95ab840d88040b, type: 2}
-  initialCamerasTransitionDuration: 35
+  initialCamerasTransitionDuration: 30
 --- !u!4 &1095964399
 Transform:
   m_ObjectHideFlags: 0
@@ -1282,7 +1282,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d983e01dbda4575a53cb927a360a0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 30
+  radius: 28
   angleDelta: 20
   checkpointObj: {fileID: 4712565767889197125, guid: 5a20544d2b6d94be1b3c7864668017c8, type: 3}
   ball: {fileID: 142185637}
@@ -1350,7 +1350,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1436068048
 Animator:
   serializedVersion: 3
@@ -6849,7 +6849,7 @@ MonoBehaviour:
   m_UpdateMethod: 2
   m_BlendUpdateMethod: 1
   m_DefaultBlend:
-    m_Style: 6
+    m_Style: 1
     m_Time: 35
     m_CustomCurve:
       serializedVersion: 2

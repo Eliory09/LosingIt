@@ -27,8 +27,8 @@ MonoBehaviour:
   - m_From: 2D Camera
     m_To: 2D Camera
     m_Blend:
-      m_Style: 6
-      m_Time: 35
+      m_Style: 1
+      m_Time: 25
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -38,8 +38,8 @@ MonoBehaviour:
   - m_From: 2D Camera
     m_To: M_2D Camera
     m_Blend:
-      m_Style: 6
-      m_Time: 35
+      m_Style: 1
+      m_Time: 25
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []
@@ -49,8 +49,8 @@ MonoBehaviour:
   - m_From: M_2D Camera
     m_To: 2D Camera
     m_Blend:
-      m_Style: 6
-      m_Time: 35
+      m_Style: 1
+      m_Time: 25
       m_CustomCurve:
         serializedVersion: 2
         m_Curve: []

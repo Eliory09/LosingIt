@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
@@ -11,9 +12,11 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player") && gameObject.CompareTag("Block"))
         {
+            Vector3 pos = gameObject.transform.position;
+            pos.z = -10;
+            CinemachineCamerasController.AddZoomCamera(pos, 0.3f);
             LevelManager.LoadNextLevel();
             CheckpointsGenerator.GenerateNewPoint();
-            // Destroy(gameObject);
         }
     }
 }

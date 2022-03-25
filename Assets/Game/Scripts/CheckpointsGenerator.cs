@@ -28,6 +28,11 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared.direction = 1;
     }
 
+    public static void ChangeRadius(float radius)
+    {
+        _shared.radius = radius;
+    }
+
     public static void GenerateNewPoint()
     {
         var delta = 90;
