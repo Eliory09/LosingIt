@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
+    [SerializeField] private AudioClip magicAudioClip;
     public void AddCheckpointToGrid()
     {
         TetrisBlock.AddToGrid(gameObject);
@@ -17,6 +18,7 @@ public class Checkpoint : MonoBehaviour
             CinemachineCamerasController.AddZoomCamera(pos, 0.3f);
             LevelManager.LoadNextLevel();
             CheckpointsGenerator.GenerateNewPoint();
+            MusicManager.PlayEffect(magicAudioClip);
         }
     }
 }
