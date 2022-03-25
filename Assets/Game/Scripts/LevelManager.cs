@@ -13,6 +13,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<GameObject> _blocks3;
     [SerializeField] private List<GameObject> _blocks4;
     [SerializeField] private List<GameObject> _blocks5;
+    [SerializeField] private List<GameObject> _blocks6;
+    [SerializeField] private GameObject _inverter;
+
     private static LevelManager _shared;
     private int currentLevel;
 
@@ -25,14 +28,13 @@ public class LevelManager : MonoBehaviour
     public static void ResetLevel()
     {
         _shared.currentLevel = 0;
+        _shared._inverter.SetActive(false);
+        CinemachineCamerasController.DisableCameraTilt();
     }
 
     public static void LoadNextLevel()
     {
         _shared.currentLevel += 1;
-        print(_shared.currentLevel);
-        print(_shared._spawner);
-        print(_shared._blocks1.Capacity);
         switch (_shared.currentLevel)
         {
             case 1:
@@ -59,26 +61,29 @@ public class LevelManager : MonoBehaviour
     private static void Level1()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks1;
-        // CinemachineCamerasController.ActivateCameraTilt();
     }
     
     private static void Level2()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks2;
+        CinemachineCamerasController.ChangeCameraTransitionsDuration(26);
     }
     
     private static void Level3()
     {
-        _shared._spawner.tetrisBlocks = _shared._blocks1;
+        _shared._spawner.tetrisBlocks = _shared._blocks3;
+        CinemachineCamerasController.ChangeCameraTransitionsDuration(23);
+        CinemachineCamerasController.ActivateCameraTilt();
     }
     
     private static void Level4()
     { 
-        _shared._spawner.tetrisBlocks = _shared._blocks1;
+        _shared._spawner.tetrisBlocks = _shared._blocks4;
+        _shared._inverter.SetActive(true);
     }
     
     private static void Level5()
     {
-        _shared._spawner.tetrisBlocks = _shared._blocks1;
+        _shared._spawner.tetrisBlocks = _shared._blocks5;
     }
 }

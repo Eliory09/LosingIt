@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Vector3 initialPlatformLocation;
     [SerializeField] private Canvas transitions;
     [SerializeField] private Vector3 zoomoutCameraInitialLocation;
+
     private static GameManager _shared;
 
     private void Awake()
@@ -65,10 +66,10 @@ public class GameManager : MonoBehaviour
         _shared.spawner.DisableSpawn();
         TetrisBlock.ResetGrid();
         LevelManager.ResetLevel();
-        
+
         // var platform = Instantiate(_shared.platformPrefab, _shared.initialPlatformLocation, Quaternion.identity);
         // platform.GetComponent<Checkpoint>().AddCheckpointToGrid();
-        CheckpointsGenerator.RemoveCheckpoint();
+        // CheckpointsGenerator.RemoveCheckpoint();
         _shared.initialPlatform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         CinemachineCamerasController.ResetCameras();
         

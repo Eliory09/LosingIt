@@ -58,12 +58,4 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared.direction *= -1;
         CinemachineCamerasController.AddCamera(_shared.currentCheckpoint.transform.position);
     }
-
-    public static void RemoveCheckpoint()
-    {
-        
-        if(_shared.currentCheckpoint != null)
-            Destroy(_shared.currentCheckpoint.gameObject);
-        
-    }
 }

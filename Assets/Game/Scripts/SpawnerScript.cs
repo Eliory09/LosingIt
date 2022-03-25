@@ -211,11 +211,10 @@ public class SpawnerScript : MonoBehaviour
         {
             for (int j = 0; j < 16; j++)
             {
-                if (TetrisBlock.grid[j + xPos - 8, yPos - deleteLength] != null)
-                {
-                    Destroy(TetrisBlock.grid[j + xPos - 8, yPos - deleteLength].gameObject);
-                    TetrisBlock.grid[j + xPos - 8, yPos - deleteLength] = null;
-                }
+                if (TetrisBlock.grid[j + xPos - 8, yPos - deleteLength] == null) continue;
+                if (TetrisBlock.grid[j + xPos - 8, yPos - deleteLength].CompareTag("InitialPlatform")) continue;
+                Destroy(TetrisBlock.grid[j + xPos - 8, yPos - deleteLength].gameObject);
+                TetrisBlock.grid[j + xPos - 8, yPos - deleteLength] = null;
             }
         }
     }

@@ -15,6 +15,10 @@ public class CinemachineCamerasController : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera zoomoutCamera;
     [SerializeField] private CinemachineVirtualCamera initial2DCamera;
     [SerializeField] private float tiltEffectSpeed;
+    [SerializeField] private CinemachineBlenderSettings cameraBlends; 
+    [SerializeField] private float initialCamerasTransitionDuration = 30f;
+
+
     private static CinemachineCamerasController _shared;
     private List<CinemachineVirtualCamera> vCams = new List<CinemachineVirtualCamera>();
     private CinemachineVirtualCamera _currentCam;
@@ -27,6 +31,7 @@ public class CinemachineCamerasController : MonoBehaviour
         _shared = this;
         _shared.vCams.Add(initial2DCamera);
         _currentCam = initial2DCamera;
+        ChangeCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
     }
 
     private void Update()
@@ -36,7 +41,6 @@ public class CinemachineCamerasController : MonoBehaviour
             Mathf.Cos(Time.time) * 0.5f * _shared.tiltEffectSpeed * (Vector3.Distance(
                 _shared.main.gameObject.transform.position,
                 _shared._currentCam.gameObject.transform.position) + 1);
-        print(_shared._currentTiltValue);
         _shared._currentCam.gameObject.transform.eulerAngles = new Vector3(0, 0, _currentTiltValue);
     }
 
@@ -59,7 +63,7 @@ public class CinemachineCamerasController : MonoBehaviour
                 Destroy(cinemachineVirtualCamera.gameObject);
         }
         _shared._currentCam = _shared.vCams[0];
-        DisableCameraTilt();
+        ChangeCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
     }
     
     public static void AddZoomCamera(Vector3 position, float duration)
@@ -86,5 +90,13 @@ public class CinemachineCamerasController : MonoBehaviour
     public static void DisableCameraTilt()
     {
         _shared._tiltActivated = false;
+    }
+
+    public static void ChangeCameraTransitionsDuration(float transitionDuration)
+    {
+        for (int i = 1; i < _shared.cameraBlends.m_CustomBlends.Length; i++)
+        {
+            _shared.cameraBlends.m_CustomBlends[i].m_Blend.m_Time = transitionDuration;
+        }
     }
 }
