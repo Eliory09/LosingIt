@@ -582,6 +582,7 @@ MonoBehaviour:
   - {fileID: 2847353807136214353, guid: 37fe9d099608d443ea19c449b5f0c2c7, type: 3}
   - {fileID: 8186118838835232838, guid: 11ea916cba9d741c183d54bcd74b34d1, type: 3}
   _inverter: {fileID: 849181503}
+  sfx: {fileID: 8300000, guid: 63e4f4c5a53e64a2faffebd1e084f44b, type: 3}
 --- !u!4 &278767613
 Transform:
   m_ObjectHideFlags: 0
@@ -1429,7 +1430,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1436068048
 Animator:
   serializedVersion: 3

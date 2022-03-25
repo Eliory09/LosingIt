@@ -16,6 +16,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private List<GameObject> _blocks5;
     [SerializeField] private List<GameObject> _blocks6;
     [SerializeField] private GameObject _inverter;
+    [SerializeField] private AudioClip sfx;
+
 
     private static LevelManager _shared;
     private int currentLevel;
@@ -68,6 +70,7 @@ public class LevelManager : MonoBehaviour
     
     private static void Level2()
     {
+        MusicManager.PlayEffect(_shared.sfx);
         _shared._spawner.tetrisBlocks = _shared._blocks2;
         CinemachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.Linear);
         CinemachineCamerasController.SetCameraTransitionsDuration(30f);

@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -83,6 +85,19 @@ public sealed class MusicManager : MonoBehaviour
   public static void SetLoop (bool val)
   {
     _shared._audio.loop = val;
+  }
+  
+  public static IEnumerator FadeOut (float FadeTime) {
+    float startVolume = _shared._audio.volume;
+ 
+    while (_shared._audio.volume > 0) {
+      _shared._audio.volume -= startVolume * Time.deltaTime / FadeTime;
+ 
+      yield return null;
+    }
+ 
+    _shared._audio.Stop ();
+    _shared._audio.volume = startVolume;
   }
 
   #endregion

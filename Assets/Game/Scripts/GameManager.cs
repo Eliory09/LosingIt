@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
 
     public static void ActivateRoundLoss()
     {
+        _shared.StartCoroutine(MusicManager.FadeOut(0.5f));
         _shared.transitions.GetComponent<Animator>().SetTrigger("toFadeOut");
 
     }
