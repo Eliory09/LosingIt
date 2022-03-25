@@ -9,13 +9,12 @@ using Random = UnityEngine.Random;
 
 public class SpawnerScript : MonoBehaviour
 {
+    
     [SerializeField] private GameObject father;
 
     // private Vector2 originPosition;
     public List<GameObject> tetrisBlocks;
-    [SerializeField] private GameObject[] backGrounds;
-    private GameObject _currentBackground;
-    [SerializeField] private float backGroundHeight = 120f;
+    
     public bool isSpawnAllowed;
 
     private GameObject lastBlock;
@@ -41,7 +40,6 @@ public class SpawnerScript : MonoBehaviour
     private void Awake()
     {
         _originalX = transform.position.x;
-        _currentBackground = backGrounds[0];
     }
 
     void Update()
@@ -88,21 +86,15 @@ public class SpawnerScript : MonoBehaviour
                     }
                 }
 
-                HigherBackGround();
+                // HigherBackGround();
+                BackGroundManager.ChangeBackGround();
                 TetrisBlock.grid = newG;
                 TetrisBlock.height *= gridExpand;
             }
         }
     }
 
-    private void HigherBackGround()
-    {
-        var oldPos = _currentBackground.transform.position;
-        var newPos = new Vector3(oldPos.x, oldPos.y + backGroundHeight, oldPos.z);
-        var obj = Instantiate(backGrounds[1], newPos, quaternion.identity);
-        obj.transform.SetParent(father.transform);
-        _currentBackground = obj;
-    }
+  
 
     public void NewTetrisBlock()
     {
