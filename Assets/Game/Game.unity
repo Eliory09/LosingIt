@@ -1915,6 +1915,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
+      propertyPath: tutorialBlock
+      value: 
+      objectReference: {fileID: 609902958168703600, guid: 9708a779fe601466ead7e51da981828e, type: 3}
+    - target: {fileID: 4192111618192999268, guid: de7b53a6a4d3d4c54bed8130e15ad27c, type: 3}
       propertyPath: camaraDistance
       value: 10
       objectReference: {fileID: 0}

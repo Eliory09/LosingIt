@@ -29,6 +29,7 @@ public class SpawnerScript : MonoBehaviour
 
 
     [SerializeField] private int xChangeMax = 5;
+    [SerializeField] private GameObject tutorialBlock;
     public bool _firstSpawn = true;
     private float _originalX;
 
@@ -36,6 +37,9 @@ public class SpawnerScript : MonoBehaviour
     public bool stopSpawn;
 
     private static float currentYPose;
+
+    private bool isTutorialOn;
+    private int tutorialBlocksSpawned;
 
     private void Awake()
     {
@@ -71,6 +75,12 @@ public class SpawnerScript : MonoBehaviour
         currentYPose = transform.position.y;
     }
 
+    public void ActivateTutorialState()
+    {
+        isTutorialOn = true;
+        tutorialBlocksSpawned = 0;
+    }
+
     private void MakeGridBigger()
     {
         if (lastBlock)
@@ -100,7 +110,7 @@ public class SpawnerScript : MonoBehaviour
     {
         // if (IsValidToSpawn())
         // {
-
+        
         var newPos = transform.position;
             newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));  
         if (_firstSpawn)
@@ -114,8 +124,25 @@ public class SpawnerScript : MonoBehaviour
             newPos.x = Mathf.RoundToInt(Random.Range(newPos.x - xChangeMax, newPos.x + xChangeMax));  
         }
 
-        lastBlock = Instantiate(tetrisBlocks[Random.Range(0, tetrisBlocks.Count)], newPos,
-            Quaternion.identity) as GameObject;
+        GameObject tetrisBlock;
+        
+        if (isTutorialOn)
+        {
+            print("heyyyy");
+            tetrisBlock = tutorialBlock;
+            tutorialBlocksSpawned++;
+            if (tutorialBlocksSpawned == 2)
+            {
+                isTutorialOn = false;
+                tutorialBlocksSpawned = 0;
+            }
+        }
+        else
+        {
+            tetrisBlock = tetrisBlocks[Random.Range(0, tetrisBlocks.Count)];
+        }
+
+        lastBlock = Instantiate(tetrisBlock, newPos, Quaternion.identity);
         lastBlock.transform.SetParent(father.transform);
         Destroy(lastBlock.gameObject, 30);
 

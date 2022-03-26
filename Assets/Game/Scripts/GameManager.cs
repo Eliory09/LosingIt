@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
         _shared.initialPlatform.GetComponent<Checkpoint>().AddCheckpointToGrid();
         _shared.ball.ResetBall();
         Instantiate(_shared.orb, _shared.orbInitialLocation, Quaternion.identity);
+        LevelManager.ResetLevel();
     }
 
     public static void ActivateRoundLoss()

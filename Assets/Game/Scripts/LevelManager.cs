@@ -92,15 +92,15 @@ public class LevelManager : MonoBehaviour
         _shared._spawner.tetrisBlocks = _shared._blocks2;
         CinemachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.Linear);
         CinemachineCamerasController.SetCameraTransitionsDuration(30f);
-        CheckpointsGenerator.ChangeRadius(35f);
+        CheckpointsGenerator.ChangeRadius(40f);
     }
     
     private static void Level3()
     {
         _shared._spawner.tetrisBlocks = _shared._blocks3;
         CinemachineCamerasController.ActivateCameraTilt();
-        CinemachineCamerasController.SetCameraTransitionsDuration(28f);
-        CheckpointsGenerator.ChangeRadius(40f);
+        CinemachineCamerasController.SetCameraTransitionsDuration(35f);
+        CheckpointsGenerator.ChangeRadius(45f);
 
     }
     
@@ -126,6 +126,7 @@ public class LevelManager : MonoBehaviour
             child.gameObject.GetComponent<SpriteRenderer>().color = color;
             child.gameObject.GetComponent<Animator>().Play(0, -1, 0f);
         }
+        _shared._spawner.ActivateTutorialState();
     }
     
     private IEnumerator DeactivateArrows()
