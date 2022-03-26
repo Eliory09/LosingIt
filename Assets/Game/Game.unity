@@ -1459,7 +1459,7 @@ MonoBehaviour:
   vmCamera: {fileID: 1027018729}
   zoomoutCamera: {fileID: 7809993341904209270, guid: e74f55fb3bc0146078432413a209abff, type: 3}
   initial2DCamera: {fileID: 1027018729}
-  tiltEffectSpeed: 5
+  tiltEffectSpeed: 2
   cameraBlends: {fileID: 11400000, guid: 225f721fb3db9498cb95ab840d88040b, type: 2}
   initialCamerasTransitionDuration: 30
 --- !u!4 &1095964399
@@ -12343,8 +12343,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ball: {fileID: 142185638}
-  startMusic: {fileID: 8300000, guid: e95cbffc3be634f1e9e82d9dc7082a68, type: 3}
-  gameMusic: {fileID: 8300000, guid: 6a716358907274a48ab8b605468f65d0, type: 3}
+  startMusic: {fileID: 8300000, guid: 144bc5d177c44499b8108498064d1f97, type: 3}
+  gameMusic: {fileID: 8300000, guid: e9e35c87ec04341e9ab30c0432ac1916, type: 3}
   orb: {fileID: 7126587547813617190, guid: 7b0c76eb5c511409297752c62621387c, type: 3}
   orbInitialLocation: {x: 50, y: 2.5, z: 0}
   spawner: {fileID: 1649863972}
