@@ -5,15 +5,21 @@ using UnityEngine;
 
 public class OrbOfLight : MonoBehaviour
 {
-    [SerializeField] private AudioClip magicAudioClip;
+    #region Fields
+
     private static readonly int Collided = Animator.StringToHash("Collided");
+
+    #endregion
+
+    #region MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         var animator = GetComponent<Animator>();
         animator.SetTrigger(Collided);
         GameManager.ActivateTetrisSequence();
-        // MusicManager.PlayEffect(magicAudioClip);
         Destroy(gameObject, 0.25f);
     }
+
+    #endregion
 }

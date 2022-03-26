@@ -1,66 +1,64 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
 
 public class BackGroundManager : MonoBehaviour
 {
-    [SerializeField] private GameObject _father = null;
+    #region Fields
 
     [SerializeField] private Transform backGroundMeasurement;
-
-    private static float backGroundHeight;
-    [SerializeField] private  GameObject[] backGrounds;
-
+    [SerializeField] private GameObject[] backGrounds;
     private static GameObject _currentBackground;
 
-    private static bool _change;
-
+    private static float _backGroundHeight;
     private bool _counter = true;
+
+    private static BackGroundManager _shared;
+
+    #endregion
+
+    #region MonoBehaviour
 
     private void Awake()
     {
+        _shared = this;
         _currentBackground = backGrounds[0];
-        backGroundHeight =backGroundMeasurement.position.y - _currentBackground.transform.position.y;
+        _backGroundHeight = backGroundMeasurement.position.y - _currentBackground.transform.position.y;
     }
 
-    void Update()
-    {
-        if (_change)
-        {
-            _change = false;
-            HigherBackGround();
-        }
-    }
+    #endregion
 
+    #region Methods
+
+    /**
+    * Making a new higher background.
+    */
     private void HigherBackGround()
     {
+        //Calculating the new background position
         var oldPos = _currentBackground.transform.position;
-        var newPos = new Vector3(oldPos.x, oldPos.y + backGroundHeight, oldPos.z);
-        
-        var obj = Instantiate(backGrounds[1], newPos, quaternion.identity );
+        var newPos = new Vector3(oldPos.x, oldPos.y + _backGroundHeight, oldPos.z);
 
+        var obj = Instantiate(backGrounds[1], newPos, quaternion.identity);
+
+        //Every second time flipping the background to be continuously with the last background color.
         if (_counter)
         {
-            obj.transform.Rotate(180 , 0 , 0);
+            obj.transform.Rotate(180, 0, 0);
         }
 
         _counter = !_counter;
-        obj.transform.SetParent(_father.transform);
+
+        obj.transform.SetParent(GameManager.shared.cloneFather.transform);
         _currentBackground = obj;
     }
 
+    /**
+    * Called from outside the class.
+    */
     public static void ChangeBackGround()
     {
-        _change = true;
+        _shared.HigherBackGround();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
-
-    // Update is called once per frame
-    
+    #endregion
 }
