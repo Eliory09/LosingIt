@@ -4,17 +4,16 @@ public class Barricades : MonoBehaviour
 {
     #region Fields
 
-    private bool _created;
-
     #endregion
 
     #region MonoBehaviour
 
-    private void Update()
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (_created) return;
-        TetrisBlock.AddToGrid(gameObject);
-        _created = true;
+        if (other.gameObject.name == "Ball")
+        {
+            GameManager.ResetGame();
+        }
     }
 
     #endregion

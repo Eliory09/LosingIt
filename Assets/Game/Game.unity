@@ -356,7 +356,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 0
   angleDelta: 0
-  checkpointObj: {fileID: 0}
+  checkpointObj:
+  - {fileID: 0}
   ball: {fileID: 0}
 --- !u!1 &142185637 stripped
 GameObject:
@@ -837,54 +838,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &309819294
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 309819296}
-  - component: {fileID: 309819295}
-  m_Layer: 0
-  m_Name: POSTFX
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &309819295
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309819294}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 0}
---- !u!4 &309819296
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 309819294}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 48.991238, y: -9.55187, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 21
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339454539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,7 +1593,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 28
   angleDelta: 15
-  checkpointObj: {fileID: 4712565767889197125, guid: 5a20544d2b6d94be1b3c7864668017c8, type: 3}
+  checkpointObj:
+  - {fileID: 3019974071056664339, guid: 0c183b273ee97d74daadca92fe9bcc9d, type: 3}
+  - {fileID: 8301577933242809401, guid: 8937a8bf317034c4981ddf55a136eec1, type: 3}
+  - {fileID: 2537671347459099803, guid: 055c37f040db38240ac656fdc48d0376, type: 3}
+  - {fileID: 6882130671908097303, guid: 48339b9f4686847408d79c6417807233, type: 3}
+  - {fileID: 4032112529842063368, guid: af29329271718324fab436c449ce9d37, type: 3}
+  - {fileID: 6095366027291609218, guid: 40150334191f3614e99c341c728f16f3, type: 3}
   ball: {fileID: 142185637}
 --- !u!4 &1272428287
 Transform:
@@ -1772,7 +1731,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &1436068048
 Animator:
   serializedVersion: 3

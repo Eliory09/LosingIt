@@ -15,6 +15,7 @@ public class BarricadeGenerator : MonoBehaviour
     [SerializeField] private GameObject ball;
     private float _timer;
     private int _lastXPose;
+    private static bool  _initiateOutSide = false;
 
     #endregion
 
@@ -22,6 +23,10 @@ public class BarricadeGenerator : MonoBehaviour
 
     private void Update()
     {
+        if (_initiateOutSide)
+        {
+            SquareInstantiate(barricades[0]);
+        }
         if (spawner.stopSpawn || !spawner.isSpawnAllowed) return;
         if (_timer >= timeToGenerate)
         {
@@ -38,6 +43,11 @@ public class BarricadeGenerator : MonoBehaviour
 
     #region Methods
 
+    public static void CallToInitiate()
+    {
+        _initiateOutSide = true;
+    }
+    
     /**
      * Instantiating a new barricade.
      */

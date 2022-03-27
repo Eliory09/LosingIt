@@ -93,6 +93,7 @@ public class LevelManager : MonoBehaviour
 
     private static void Level2()
     {
+        BarricadeGenerator.CallToInitiate();
         MusicManager.PlayEffect(_shared.sfx);
         _shared.spawner.tetrisBlocks = _shared.blocks2;
         CinemaMachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.Linear);
@@ -102,6 +103,7 @@ public class LevelManager : MonoBehaviour
 
     private static void Level3()
     {
+        BarricadeGenerator.CallToInitiate();
         _shared.spawner.tetrisBlocks = _shared.blocks3;
         CinemaMachineCamerasController.ActivateCameraTilt();
         CinemaMachineCamerasController.SetCameraTransitionsDuration(35f);
@@ -110,6 +112,7 @@ public class LevelManager : MonoBehaviour
 
     private static void Level4()
     {
+        BarricadeGenerator.CallToInitiate();
         CinemaMachineCamerasController.SetCameraTransitionsDuration(26f);
         _shared.spawner.tetrisBlocks = _shared.blocks4;
         _shared.inverter.SetActive(true);
@@ -117,6 +120,7 @@ public class LevelManager : MonoBehaviour
 
     private static void Level5()
     {
+        BarricadeGenerator.CallToInitiate();
         _shared.spawner.tetrisBlocks = _shared.blocks5;
     }
 
