@@ -241,7 +241,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &72425605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -255,26 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barricades:
-  - {fileID: 6361768268034918760, guid: a074f6ad37a4d8c4792bc5fd8b49e176, type: 3}
-  - {fileID: 3096726418706829730, guid: 603a93e5942c4644ebc4e7d7b099a9fe, type: 3}
-  - {fileID: 6101182881555183957, guid: 78c0947231c359848b0fb1a25998ee4e, type: 3}
-  - {fileID: 4426633176809856593, guid: 5355bb6aedcbff142a63ea6c188558dd, type: 3}
-  - {fileID: 7377169952322280627, guid: 4fe82ad49f72fbf469f296a6964d67ba, type: 3}
-  - {fileID: 3603353335017327625, guid: 8d9e54027b61edc44bb84dc1e942400d, type: 3}
-  - {fileID: 2619059517057507011, guid: 9237260bddd1a3a4cab8d56980f6d39d, type: 3}
-  - {fileID: 4609764071860493140, guid: 455b45fa58bc4e742bdb0b983c7cb6cf, type: 3}
-  - {fileID: 6362266733716869130, guid: c21eba4c551ffc244a7abd58429b0144, type: 3}
-  - {fileID: 4465783974145707090, guid: da223706d39a86549ad19c6055d94e82, type: 3}
-  - {fileID: 8094207815951159022, guid: a74d83ee18e71a944a254ea30a543804, type: 3}
-  - {fileID: 5587405690941732094, guid: e86c671a50a24974ca8436b0176b83fa, type: 3}
-  - {fileID: 3823056816494034112, guid: ec3d4ab4173b1aa4fa014853722325d7, type: 3}
-  - {fileID: 3806775646810728685, guid: 5a21698ffc49f594b83ad5c4c413f6f8, type: 3}
-  - {fileID: 581034073856307409, guid: 758bac9eca6e3704f8d6e5f930abc997, type: 3}
-  - {fileID: 6425000202657483745, guid: c39bab7e38001c74aafb01841f27b570, type: 3}
-  - {fileID: 6666474146672787158, guid: 3706a68efdb1fee4385070d1815617c9, type: 3}
-  - {fileID: 1285214925380674910, guid: cc57bcb90c60871439ab3f05f4c0f251, type: 3}
-  - {fileID: 8645758876755375648, guid: a198bebc3de754845bfff0f4eb198acd, type: 3}
-  - {fileID: 1110465009203815868, guid: 9b88380ab8e6e4d4f8a0bb2bb8ce554f, type: 3}
+  - {fileID: 2891885625913028741, guid: 1f125f86e9442054aa3fc4cb81111ced, type: 3}
   maxIndex: 0
   maxRandX: 4
   spawnerDistance: 3
@@ -734,7 +715,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 339454540}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &281956644
 MonoBehaviour:
@@ -865,8 +846,8 @@ Transform:
   m_LocalPosition: {x: -31.409517, y: 229.51855, z: -83.63086}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1105471031}
   - {fileID: 281956643}
+  - {fileID: 1105471031}
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -12384,7 +12365,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 178761606735336736, guid: 2e48ea1b624da2349a0660ea8a83b5e3, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 178761606735336736, guid: 2e48ea1b624da2349a0660ea8a83b5e3, type: 3}
       propertyPath: m_LocalPosition.x
