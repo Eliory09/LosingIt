@@ -1,4 +1,7 @@
+using System;
 using UnityEngine;
+
+using Random = UnityEngine.Random;
 
 public class Checkpoint : MonoBehaviour
 {
@@ -6,10 +9,12 @@ public class Checkpoint : MonoBehaviour
 
     [SerializeField] private AudioClip magicAudioClip;
 
+
     #endregion
 
     #region MonoBehaviour
 
+    
     public void AddCheckpointToGrid()
     {
         TetrisBlock.AddToGrid(gameObject);

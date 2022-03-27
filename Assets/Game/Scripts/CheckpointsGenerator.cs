@@ -9,7 +9,7 @@ public class CheckpointsGenerator : MonoBehaviour
 
     [Range(0.0f, 50.0f)] [SerializeField] private float radius;
     [SerializeField] private float angleDelta;
-    [SerializeField] private GameObject checkpointObj;
+    [SerializeField] private GameObject[] checkpointObj;
     [SerializeField] private GameObject ball;
 
     private static CheckpointsGenerator _shared;
@@ -64,7 +64,9 @@ public class CheckpointsGenerator : MonoBehaviour
         _shared._currentPoint += _shared.ball.transform.position;
         _shared._currentPoint.x = Mathf.RoundToInt(_shared._currentPoint.x);
         _shared._currentPoint.y = Mathf.RoundToInt(_shared._currentPoint.y);
-        _shared._currentCheckpoint = Instantiate(_shared.checkpointObj);
+
+        var index = Mathf.RoundToInt(Random.Range(0, _shared.checkpointObj.Length));
+        _shared._currentCheckpoint = Instantiate(_shared.checkpointObj[index]);
         _shared._currentCheckpoint.transform.position = _shared._currentPoint;
         _shared._currentCheckpoint.GetComponent<Checkpoint>().AddCheckpointToGrid();
         _shared._direction *= -1;
