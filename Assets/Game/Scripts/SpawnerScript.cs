@@ -17,6 +17,8 @@ public class SpawnerScript : MonoBehaviour
     [SerializeField] private float maxSpaceBlockToSpawnerX = 1.2f;
     [SerializeField] private int deleteLength = 10;
     [SerializeField] private int xChangeMax = 5;
+    [SerializeField] private float maxTimeToSpawn = 8f;
+
 
     public bool firstSpawn = true;
     public bool isSpawnAllowed;
@@ -26,7 +28,9 @@ public class SpawnerScript : MonoBehaviour
     private bool _isTutorialOn;
     private float _originalX;
     private int _tutorialBlocksSpawned;
+    private float _timer;
 
+    
     #endregion
 
     #region MonoBehaviour
@@ -48,10 +52,20 @@ public class SpawnerScript : MonoBehaviour
         }
 
 
-        if (isSpawnAllowed && EnoughSpaceToSpawn() && !stopSpawn)
+        if (isSpawnAllowed && !stopSpawn)
         {
-            isSpawnAllowed = false;
-            NewTetrisBlock();
+
+            if (EnoughSpaceToSpawn() || _timer >= maxTimeToSpawn)
+            {
+                _timer = 0;
+                isSpawnAllowed = false;
+                NewTetrisBlock(); 
+            }
+
+            else
+            {
+                _timer += Time.deltaTime;
+            }
         }
 
         if (_lastBlock && BrickNotColliding())
