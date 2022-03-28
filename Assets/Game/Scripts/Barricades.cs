@@ -12,14 +12,8 @@ public class Barricades : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!other.gameObject.CompareTag("Player")) return;
-        StartCoroutine(ResetCooldown(1));
+        if (!other.gameObject.CompareTag("Player") || !GameManager.IsResetAllowed()) return;
         GameManager.ActivateRoundLoss();
-    }
-    
-    private IEnumerator ResetCooldown(float time)
-    {
-        yield return new WaitForSeconds(time);
     }
 
     #endregion

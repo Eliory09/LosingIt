@@ -4,6 +4,7 @@ using Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
 
 public class CinemaMachineCamerasController : MonoBehaviour
@@ -53,6 +54,7 @@ public class CinemaMachineCamerasController : MonoBehaviour
     public static void AddCamera(Vector3 location, int orthographicSize = 7)
     {
         location.z = -10;
+        location.x += 5 * Random.Range(-1, 1);
         var cam = Instantiate(_shared.vmCamera, location, quaternion.identity);
         cam.gameObject.name = "2D Camera";
         cam.m_Lens.OrthographicSize = orthographicSize;

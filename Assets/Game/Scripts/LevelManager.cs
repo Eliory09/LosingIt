@@ -18,6 +18,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject inverter;
     [SerializeField] private AudioClip sfx;
     [SerializeField] private GameObject arrows;
+    [SerializeField] private GameObject logo;
+
 
     private static LevelManager _shared;
     private int _currentLevel;
@@ -57,6 +59,10 @@ public class LevelManager : MonoBehaviour
         CinemaMachineCamerasController.DisableCameraTilt();
         CheckpointsGenerator.ChangeRadius(28f);
         CinemaMachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.EaseInOut);
+        _shared.logo.transform.GetChild(0).gameObject.SetActive(false);
+        var logoAnimator = _shared.logo.GetComponent<Animator>();
+        logoAnimator.ResetTrigger("Activate");
+        logoAnimator.Play("Empty", -1 ,0);
         StartTutorial();
     }
 
@@ -80,8 +86,11 @@ public class LevelManager : MonoBehaviour
             case 5:
                 Level5();
                 break;
+            case 6:
+                Level6();
+                break;
             default:
-                Level5();
+                Level6();
                 break;
         }
     }
@@ -89,6 +98,7 @@ public class LevelManager : MonoBehaviour
     private static void Level1()
     {
         _shared.spawner.tetrisBlocks = _shared.blocks1;
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(30f);
     }
 
     private static void Level2()
@@ -96,8 +106,8 @@ public class LevelManager : MonoBehaviour
         BarricadeGenerator.CallToInitiate();
         MusicManager.PlayEffect(_shared.sfx);
         _shared.spawner.tetrisBlocks = _shared.blocks2;
-        CinemaMachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.Linear);
-        CinemaMachineCamerasController.SetCameraTransitionsDuration(30f);
+        CinemaMachineCamerasController.SetCameraTransitionsStyle(CinemachineBlendDefinition.Style.EaseIn);
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(42f);
         CheckpointsGenerator.ChangeRadius(40f);
     }
 
@@ -106,23 +116,32 @@ public class LevelManager : MonoBehaviour
         BarricadeGenerator.CallToInitiate();
         _shared.spawner.tetrisBlocks = _shared.blocks3;
         CinemaMachineCamerasController.ActivateCameraTilt();
-        CinemaMachineCamerasController.SetCameraTransitionsDuration(35f);
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(55f);
         CheckpointsGenerator.ChangeRadius(45f);
     }
 
     private static void Level4()
     {
         BarricadeGenerator.CallToInitiate();
-        CinemaMachineCamerasController.SetCameraTransitionsDuration(26f);
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(47f);
         _shared.spawner.tetrisBlocks = _shared.blocks4;
         _shared.inverter.SetActive(true);
     }
 
     private static void Level5()
     {
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(47f);
         BarricadeGenerator.CallToInitiate();
         _shared.spawner.tetrisBlocks = _shared.blocks5;
     }
+    
+    private static void Level6()
+    {
+        CinemaMachineCamerasController.SetCameraTransitionsDuration(42f);
+        BarricadeGenerator.CallToInitiate();
+        _shared.spawner.tetrisBlocks = _shared.blocks6;
+    }
+
 
     private static void StartTutorial()
     {
@@ -144,6 +163,8 @@ public class LevelManager : MonoBehaviour
         {
             arrow.gameObject.GetComponent<Animator>().SetTrigger(Disable);
         }
+        
+        _shared.logo.GetComponent<Animator>().SetTrigger("Activate");
 
         yield return new WaitForSeconds(0.4f);
         foreach (Transform child in _shared.arrows.transform)

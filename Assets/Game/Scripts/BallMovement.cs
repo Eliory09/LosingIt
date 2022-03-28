@@ -9,7 +9,6 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector3 initialPosition;
     private bool _areArrowsPressed;
-    private bool _resetAllowed;
 
     public int counter;
 
@@ -17,21 +16,13 @@ public class BallMovement : MonoBehaviour
 
     #region MonoBehaviour
 
-    private void Awake()
-    {
-        _resetAllowed = false;
-        StartCoroutine(ResetCooldown(1f));
-    }
-
     private void Update()
     {
         if (Camera.main is null) return;
         var screenPoint = Camera.main.WorldToViewportPoint(transform.position);
         var isVisible = screenPoint.z > 0 && screenPoint.x > 0 && screenPoint.x < 1 && screenPoint.y > 0 &&
                         screenPoint.y < 1;
-        if ((isVisible && counter != 0) || !_resetAllowed) return;
-        _resetAllowed = false;
-        StartCoroutine(ResetCooldown(1));
+        if (isVisible && counter != 0 || !GameManager.IsResetAllowed()) return;
         GameManager.ActivateRoundLoss();
     }
 
@@ -105,12 +96,6 @@ public class BallMovement : MonoBehaviour
         transform.position = initialPosition;
         physics.velocity = Vector2.zero;
         trail.Clear();
-    }
-
-    private IEnumerator ResetCooldown(float time)
-    {
-        yield return new WaitForSeconds(time);
-        _resetAllowed = true;
     }
 
     #endregion

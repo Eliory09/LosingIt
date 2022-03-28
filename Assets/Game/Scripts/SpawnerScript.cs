@@ -149,7 +149,7 @@ public class SpawnerScript : MonoBehaviour
 
 
         _lastBlock.transform.SetParent(GameManager.shared.cloneFather.transform);
-        Destroy(_lastBlock.gameObject, 30);
+        // Destroy(_lastBlock.gameObject, 30);
     }
 
     /**

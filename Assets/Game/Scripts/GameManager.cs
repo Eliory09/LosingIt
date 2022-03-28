@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -14,6 +16,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Canvas transitions;
     [SerializeField] private Vector3 zoomoutCameraInitialLocation;
 
+    private bool _isSpawnAllowed = true;
     public GameObject cloneFather;
     public static GameManager shared;
     private static readonly int ToFadeOut = Animator.StringToHash("toFadeOut");
@@ -30,6 +33,14 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         InitializeGame();
+    }
+
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 
     #endregion
@@ -53,6 +64,12 @@ public class GameManager : MonoBehaviour
     {
         shared.StartCoroutine(MusicManager.FadeOut(0.5f));
         shared.transitions.GetComponent<Animator>().SetTrigger(ToFadeOut);
+        shared.StartCoroutine(ResetCooldown(2));
+    }
+
+    public static bool IsResetAllowed()
+    {
+        return shared._isSpawnAllowed;
     }
 
     public static void ResetGame()
@@ -91,6 +108,13 @@ public class GameManager : MonoBehaviour
     public static void UpdateSpawnerPosition(int distanceOfCamera)
     {
         shared.spawner.ChangeCameraDistance(distanceOfCamera);
+    }
+    
+    private static IEnumerator ResetCooldown(float time)
+    {
+        shared._isSpawnAllowed = false;
+        yield return new WaitForSeconds(time);
+        shared._isSpawnAllowed = true;
     }
 
     #endregion
