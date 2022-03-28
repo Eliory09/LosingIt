@@ -23,21 +23,9 @@ public class BarricadeGenerator : MonoBehaviour
 
     private void Update()
     {
-        if (_initiateOutSide)
-        {
-            _initiateOutSide = false;
-            SquareInstantiate(barricades[0]);
-        }
-        // if (spawner.stopSpawn || !spawner.isSpawnAllowed) return;
-        // if (_timer >= timeToGenerate)
-        // {
-        //     _timer = 0;
-        //     var index = Mathf.RoundToInt(Random.Range(0, maxIndex));
-        //     var barricade = barricades[index];
-        //     SquareInstantiate(barricade);
-        // }
-        //
-        // _timer += Time.deltaTime;
+        if (!_initiateOutSide) return;
+        _initiateOutSide = false;
+        SquareInstantiate(barricades[0]);
     }
 
     #endregion

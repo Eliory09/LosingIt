@@ -134,7 +134,7 @@ public class SpawnerScript : MonoBehaviour
         {
             tetrisBlock = tutorialBlock;
             _tutorialBlocksSpawned++;
-            if (_tutorialBlocksSpawned == 2)
+            if (_tutorialBlocksSpawned == 1)
             {
                 _isTutorialOn = false;
                 _tutorialBlocksSpawned = 0;

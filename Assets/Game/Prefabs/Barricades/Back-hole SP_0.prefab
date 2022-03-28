@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 7713421405370851727}
   m_Layer: 0
   m_Name: Back-hole SP_0
-  m_TagString: Untagged
+  m_TagString: Barricades
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
