@@ -75,15 +75,17 @@ public class CinemaMachineCamerasController : MonoBehaviour
         SetCameraTransitionsDuration(_shared.initialCamerasTransitionDuration);
     }
 
-    public static void AddZoomCamera(Vector3 position, float duration)
+    public static void AddZoomCamera(Vector3 position, float duration, float orthographicSize = 7)
     {
-        _shared.StartCoroutine(_shared.SetupZoom(position, duration));
+        _shared.StartCoroutine(_shared.SetupZoom(position, duration, orthographicSize));
     }
 
-    private IEnumerator SetupZoom(Vector3 position, float duration)
+    private IEnumerator SetupZoom(Vector3 position, float duration, float orthographicSize)
     {
+        position.z = -10;
         var zoCam = Instantiate(_shared.zoomOutCamera, position, quaternion.identity);
         zoCam.gameObject.name = "ZoomoutCamera";
+        zoCam.m_Lens.OrthographicSize = orthographicSize;
         GameManager.UpdateSpawnerPosition((int) zoCam.m_Lens.OrthographicSize);
         _shared._currentZoomCam = zoCam;
         _shared._vCams.Add(zoCam);

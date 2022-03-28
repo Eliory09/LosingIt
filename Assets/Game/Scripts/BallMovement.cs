@@ -9,6 +9,7 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private Vector3 initialPosition;
     private bool _areArrowsPressed;
+    private bool isMovingAllowed = true;
 
     public int counter;
 
@@ -46,6 +47,7 @@ public class BallMovement : MonoBehaviour
     void FixedUpdate()
     {
         Vector2 currentVel = Vector2.zero;
+        if (!isMovingAllowed) return;
 
         if (Input.GetKey(KeyCode.UpArrow))
         {
@@ -96,6 +98,18 @@ public class BallMovement : MonoBehaviour
         transform.position = initialPosition;
         physics.velocity = Vector2.zero;
         trail.Clear();
+        ActivateBallMovement();
+    }
+
+    public void DeactivateBallMovement()
+    {
+        physics.velocity = Vector2.zero;
+        isMovingAllowed = false;
+    }
+    
+    public void ActivateBallMovement()
+    {
+        isMovingAllowed = true;
     }
 
     #endregion

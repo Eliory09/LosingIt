@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -15,8 +16,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject initialPlatform;
     [SerializeField] private Canvas transitions;
     [SerializeField] private Vector3 zoomoutCameraInitialLocation;
+    [SerializeField] private GameObject LoseAnimationBG;
 
     private bool _isSpawnAllowed = true;
+    private GameObject _loseBg;
     public GameObject cloneFather;
     public static GameManager shared;
     private static readonly int ToFadeOut = Animator.StringToHash("toFadeOut");
@@ -62,9 +65,8 @@ public class GameManager : MonoBehaviour
 
     public static void ActivateRoundLoss()
     {
-        shared.StartCoroutine(MusicManager.FadeOut(0.5f));
-        shared.transitions.GetComponent<Animator>().SetTrigger(ToFadeOut);
-        shared.StartCoroutine(ResetCooldown(2));
+        shared.StartCoroutine(ResetCooldown(4f));
+        shared.StartCoroutine(LoseAnimation());
     }
 
     public static bool IsResetAllowed()
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
         CinemaMachineCamerasController.ResetCameras();
 
         shared.ball.ResetBall();
+        Destroy(shared._loseBg);
         Instantiate(shared.orb, shared.orbInitialLocation, Quaternion.identity);
     }
 
@@ -115,6 +118,25 @@ public class GameManager : MonoBehaviour
         shared._isSpawnAllowed = false;
         yield return new WaitForSeconds(time);
         shared._isSpawnAllowed = true;
+    }
+
+    private static IEnumerator LoseAnimation()
+    {
+        shared.ball.DeactivateBallMovement();
+        var position = shared.ball.transform.position;
+        shared._loseBg = Instantiate(shared.LoseAnimationBG, position, quaternion.identity);
+        CinemaMachineCamerasController.AddZoomCamera(position, 0.3f, 3);
+        yield return new WaitForSeconds(0.3f);
+        CinemaMachineCamerasController.AddZoomCamera(position, 3f, 0.5f);
+        yield return new WaitForSeconds(3f);
+        LoseAnimationContinue();
+    }
+    
+    private static void LoseAnimationContinue()
+    {
+        shared.StartCoroutine(MusicManager.FadeOut(0.5f));
+        shared.transitions.GetComponent<Animator>().SetTrigger(ToFadeOut);
+        shared.StartCoroutine(ResetCooldown(2));
     }
 
     #endregion

@@ -17316,6 +17316,7 @@ MonoBehaviour:
   initialPlatform: {fileID: 1761551104}
   transitions: {fileID: 1436068051}
   zoomoutCameraInitialLocation: {x: 50, y: 7, z: -10}
+  LoseAnimationBG: {fileID: 6677916030108874702, guid: 3814130054f7c4b998fb6a1077bd5f4f, type: 3}
   cloneFather: {fileID: 1415066957}
 --- !u!4 &2123911777
 Transform:
